@@ -11,18 +11,18 @@ namespace CarRental.Data.Repositories
 
     public class CarRepository :Repository<Car> , ICarRepository 
     {
-        private readonly RentACarContext _context;
 
-        public CarRepository(RentACarContext context): base(context.Car)
+        public CarRepository(RentACarContext context): base(context)
         {
-            _context = context;
         }
-       
- 
-        public List<Car> FindAllByLocation(string carBrand,string carModel,string carColor, string carLocation,int? minKm,int? maxKm)
+
+
+        public List<Car> FindFilters(DateTime? startDate,DateTime? endDate,string carBrand, string carModel, string carColor, string carLocation,
+                                     int? maxPrice,int? minPrice,int? minKm, int? maxKm, int? carFuelTypes, bool? isManuel)
         {
             var query = DbSet.AsQueryable();
-       
+           // if (maxPrice.HasValue)
+                //query = query.All(x => x.PriceTables.Any(y => y.carPrice <= maxPrice && y.carPrice >= minPrice)); //TODO:  WILL ADD PRICETABLE DATES TO QUERY !!!
             if (!string.IsNullOrEmpty(carLocation))
                 query = query.Where(x => x.CarLocation == carLocation);
             if (!string.IsNullOrEmpty(carBrand))
@@ -33,53 +33,43 @@ namespace CarRental.Data.Repositories
                 query = query.Where(x => x.CarColor == carColor);
             if (minKm.HasValue)
                 query = query.Where(x => x.CarKm >= minKm.Value);
-            if(maxKm.HasValue)
+            if (maxKm.HasValue)
                 query = query.Where(x => x.CarKm <= maxKm.Value);
+            if (carFuelTypes.HasValue)
+            {
+                if (carFuelTypes == 1)
+                    query = query.Where(x => x.CarFuelTypes == (CarFuelTypes)carFuelTypes);
+                else if (carFuelTypes == 2)
+                    query = query.Where(x => x.CarFuelTypes == (CarFuelTypes)carFuelTypes);
+                else if (carFuelTypes == 3)
+                    query = query.Where(x => x.CarFuelTypes == (CarFuelTypes)carFuelTypes);
+            }
+            //if(startDate.HasValue&& endDate.HasValue)
+            //   query= query.All(x => x.Books.Any(y => y.RentEndDate > startDate && y.RentStartDate < endDate)); //check
 
+            if (isManuel.HasValue)
+                query = query.Where(x => x.IsManual == isManuel);
             return query.ToList();
         }
         public List<Car> FindAllCars()
         {
-            return _context.Car.ToList();               
-        }
-        public bool IsManuel(int carId)
-        {
-            return _context.Car.Where(x => x.CarId == carId).Select(s => s.IsManual).FirstOrDefault();
-        }
+            return DbSet.ToList();               
+        }   
         public List<Car> FindCarsBetweenPrice(int minPrice,int maxPrice)
         {
             return null;        //price table olcaksa ordan?
         }
-        public List<Car> FindCarsBetweenKm(int minKm,int maxKm)
+        public List<Car> FindRandomCars(int randNum)
         {
-            return _context.Car.Where(x => x.CarKm >= minKm && x.CarKm <= maxKm).ToList();
+               return DbSet.OrderBy(r => Guid.NewGuid()).Take(randNum).ToList();
         }
-        public List<Car> FindCarsWithBrand(string brandName)
-        {
-            return _context.Car.Where(x => x.CarBrand == brandName).ToList();
-        }
-        public List<Car> FindCarsWithModel(string modelName)
-        {
-            return _context.Car.Where(x => x.CarModel == modelName).ToList();
-        }
-        public List<Car> FindCarsWithYear(int minYear, int maxYear)
-        {
-            return _context.Car.Where(x => x.CarYear >= minYear && x.CarYear <= maxYear).ToList();
-        }
-        public List<Car> FindCarsWithColor(string color)
-        {
-            return _context.Car.Where(x => x.CarColor == color).ToList();
-        }
-        public List<Car> FindCarsWithFuel(CarFuelTypes carFuelTypes)
-        {
-            return _context.Car.Where(x => x.CarFuelTypes == carFuelTypes).ToList();
-        }
-        public List<Car> GetCarsWithIdList(List<int> list)
-        {
 
-            return _context.Car.Where(x => !list.Contains(x.CarId)).ToList();  
-          //  _context.Book.Where(y => y.RentEndDate > dateStart && y.RentStartDate < dateEnd).Select(t => t.CarId).ToList();
+        //public List<Car> GetCarsWithIdList(List<int> list)
+        //{
 
-        }
+        //    return DbSet.Where(x => !list.Contains(x.CarId)).ToList();  
+        //  //  _context.Book.Where(y => y.RentEndDate > dateStart && y.RentStartDate < dateEnd).Select(t => t.CarId).ToList();
+
+        //}
     }
 }

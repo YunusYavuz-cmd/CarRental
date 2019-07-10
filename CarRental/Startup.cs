@@ -40,10 +40,12 @@ namespace CarRental.Web
 
 
             services.AddTransient<HomePageServices>();
+            services.AddTransient<ICarRepository,CarRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
-            var connection = @"Server=YUNUSPC\SQLEXPRESS;Database=Rent.Database;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=.\SQLEXPRESS;Database=Rent.Database;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<RentACarContext>
                 (options => options.UseSqlServer(connection));
         }

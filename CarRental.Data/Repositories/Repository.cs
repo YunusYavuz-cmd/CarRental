@@ -10,31 +10,30 @@ namespace CarRental.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : DomainBase
     {
-        protected DbSet<T> DbSet;
-
-
-        protected Repository(DbSet<T> dbSet)
+        protected RentACarContext Context;
+        protected virtual DbSet<T> DbSet => Context.Set<T>() ;
+        protected Repository(RentACarContext dbContext)
         {
-            DbSet = dbSet;
+            Context = dbContext;
         }
 
-        public int AddAndSave(T entity, RentACarContext context)
+        public int AddAndSave(T entity)
         {
             DbSet.Add(entity);
-            return Save(context);
+            return Save();
         }
         public T FindById(long id)
         {
             return DbSet.FirstOrDefault(x => x.Id == id);
         }
-        public int Save(RentACarContext context)
+        public int Save()
         {
-            return context.SaveChanges();
+            return Context.SaveChanges();
         }
-        public int UpdateAndSave(T entity,RentACarContext context)
+        public int UpdateAndSave(T entity)
         {
             DbSet.Update(entity);
-            return Save(context);
+            return Save();
         }
 
         //public virtual T Add(T entity)

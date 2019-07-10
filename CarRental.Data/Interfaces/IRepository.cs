@@ -10,9 +10,9 @@ namespace CarRental.Data.Interfaces
     {
 
 
-        int AddAndSave(T entity,RentACarContext context);
-        int UpdateAndSave(T entity,RentACarContext context);
-        int Save(RentACarContext context);
+        int AddAndSave(T entity);
+        int UpdateAndSave(T entity);
+        int Save();
         //T FindById(long id);
         //T Add(T entity);
         //T Delete(T entity);

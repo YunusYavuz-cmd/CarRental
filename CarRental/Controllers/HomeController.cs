@@ -16,11 +16,11 @@ namespace CarRental.Web.Controllers
         private readonly HomePageServices _homePageServices; 
         public HomeController(HomePageServices homePageServices)
         {
-            
+            _homePageServices = homePageServices;
         }
         public IActionResult Index()
         {
-            return View();
+            return View(_homePageServices.Reto());
         }
 
 

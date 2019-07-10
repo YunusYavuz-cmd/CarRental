@@ -20,7 +20,7 @@ namespace CarRental.Services.Services
 
         public AdvertListDto AdvertFilterKm(int kmRangeStart, int kmRangeEnd)
         {
-            var d = _carRepository.FindCarsBetweenKm(kmRangeStart, kmRangeEnd);
+            var d = _carRepository.FindFilters(null,null,null,null,null,null,null,null,kmRangeStart, kmRangeEnd,null,null);
             AdvertListDto advertListDto = new AdvertListDto{
 
               MiniAdvertList= d.Select(x => x.ToDto()).ToList()

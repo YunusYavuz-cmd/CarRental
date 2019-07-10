@@ -7,16 +7,11 @@ namespace CarRental.Data.Interfaces
 {
     public interface ICarRepository
     {
+        List<Car> FindFilters(DateTime? startDate, DateTime? endDate, string carBrand, string carModel, string carColor, string carLocation,
+                                       int? maxPrice, int? minPrice, int? minKm, int? maxKm, int? carFuelTypes, bool? isManuel);
         List<Car> FindAllCars();
-        List<Car> FindCarsWithFuel(CarFuelTypes carFuelTypes);
-        List<Car> FindCarsWithColor(string color);
-        List<Car> FindCarsWithYear(int minYear, int maxYear);
-        List<Car> FindCarsWithBrand(string brandName);
-        List<Car> FindCarsBetweenKm(int minKm, int maxKm);
         List<Car> FindCarsBetweenPrice(int minPrice, int maxPrice);
-        bool IsManuel(int carId);
-        List<Car> FindAllByLocation(string location);
-        List<Car> FindCarsWithModel(string modelName);
+        List<Car> FindRandomCars(int randNum);
 
     }
 }

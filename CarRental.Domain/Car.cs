@@ -20,6 +20,9 @@ using System.Text;
         public int CarKm { get; set; }
         public CarFuelTypes CarFuelTypes { get; set; }
         public bool IsManual { get; set; }
-      
+
+        public virtual IList<Book> Books { get; set; }
+        public virtual IList<PriceTable> PriceTables { get; set; }
+
     }
 }

@@ -12,7 +12,7 @@ namespace CarRental.Data.Repositories
         private readonly RentACarContext _context;
 
         public CustomerRepository(RentACarContext context)
-            : base(context.Customer)
+            : base(context)
         {
             _context = context;
         }
