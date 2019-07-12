@@ -73,6 +73,7 @@ namespace CarRental.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("search", "/kiralik-{keywords}", new {controller = "Search", action = "Index"});
             });
         }
     }
