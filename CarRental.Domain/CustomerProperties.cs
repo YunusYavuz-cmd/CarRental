@@ -7,7 +7,6 @@ namespace CarRental.Domain
   
     public class CustomerProperties : DomainBase
     {
-        public int CustomerId { get; set; }
         public CustomerPropertyType Type { get; set; }
         public int TypeId { get; set; }
         public string Value { get; set; }

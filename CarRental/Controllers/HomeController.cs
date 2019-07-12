@@ -13,8 +13,8 @@ namespace CarRental.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly HomePageServices _homePageServices; 
-        public HomeController(HomePageServices homePageServices)
+        private readonly IHomePageServices _homePageServices; 
+        public HomeController(IHomePageServices homePageServices)
         {
             _homePageServices = homePageServices;
         }

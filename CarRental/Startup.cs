@@ -39,7 +39,7 @@ namespace CarRental.Web
 
 
 
-            services.AddTransient<HomePageServices>();
+            services.AddTransient<IHomePageServices,HomePageServices>();
             services.AddTransient<ICarRepository,CarRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

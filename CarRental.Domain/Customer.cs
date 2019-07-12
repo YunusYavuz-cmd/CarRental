@@ -6,7 +6,6 @@ namespace CarRental.Domain
 {
    public class Customer : DomainBase
     {
-        public int CustomerId { get; set; }
         public string CustomerEmail { get; set; }
         public int CustomerPhoneNumber { get; set; }
         public int CustomerValue { get; set; }

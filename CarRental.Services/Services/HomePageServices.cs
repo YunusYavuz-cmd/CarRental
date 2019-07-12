@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CarRental.Services.Services
 {
-    public class HomePageServices
+    public class HomePageServices : IHomePageServices
     {
         private readonly ICarRepository CarRep;
         public HomePageServices(ICarRepository carRep)
