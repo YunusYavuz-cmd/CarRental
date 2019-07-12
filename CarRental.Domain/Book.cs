@@ -6,7 +6,7 @@ namespace CarRental.Domain
 {
     public class Book : DomainBase
     {
-        public int CustomerId { get; set; }
+        public int BookId { get; set; }
         public DateTime RentStartDate { get; set; }
         public DateTime RentEndDate { get; set; }
         public int BeforeKm { get; set; }

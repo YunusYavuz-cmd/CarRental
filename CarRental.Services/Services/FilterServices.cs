@@ -18,9 +18,11 @@ namespace CarRental.Services.Services
             bookRepository = _bookRepository;
        }
 
-        public AdvertListDto AdvertFilterKm(int kmRangeStart, int kmRangeEnd)
+        public AdvertListDto AdvertFilterKm(DateTime? startDate, DateTime? endDate, string carBrand, string carModel, string carColor, string carLocation,
+                                       int? maxPrice, int? minPrice, int? minKm, int? maxKm, int? carFuelTypes, bool? isManuel)
         {
-            var d = _carRepository.FindFilters(null,null,null,null,null,null,null,null,kmRangeStart, kmRangeEnd,null,null);
+            var d = _carRepository.FindFilters(startDate, endDate, carBrand, carModel, carColor, carLocation, maxPrice, 
+                minPrice, minKm, maxKm, carFuelTypes, isManuel);
             AdvertListDto advertListDto = new AdvertListDto{
 
               MiniAdvertList= d.Select(x => x.ToDto()).ToList()
@@ -28,6 +30,7 @@ namespace CarRental.Services.Services
             return advertListDto;
 
         }
+
         //public MiniAdvertDto AdvertFilterModel(string carModel)
         //{
         //    return _carRepository.FindCarsWithModel(carModel);

@@ -44,9 +44,10 @@ namespace CarRental.Data.Repositories
                 else if (carFuelTypes == 3)
                     query = query.Where(x => x.CarFuelTypes == (CarFuelTypes)carFuelTypes);
             }
-            //if(startDate.HasValue&& endDate.HasValue)
-            //   query= query.All(x => x.Books.Any(y => y.RentEndDate > startDate && y.RentStartDate < endDate)); //check
-
+            if (startDate.HasValue && endDate.HasValue)
+            {
+             //add query date   query = query.Select(x => x.Books.Any(y => y.BookId == x.CarId && y.RentEndDate > startDate && y.RentStartDate < endDate));
+            }
             if (isManuel.HasValue)
                 query = query.Where(x => x.IsManual == isManuel);
             return query.ToList();
@@ -63,6 +64,12 @@ namespace CarRental.Data.Repositories
         {
                return DbSet.OrderBy(r => Guid.NewGuid()).Take(randNum).ToList();
         }
+       // public List<Car> FindWithDate(DateTime startDate,DateTime endDate)
+        //{
+
+
+
+        //}
 
         //public List<Car> GetCarsWithIdList(List<int> list)
         //{

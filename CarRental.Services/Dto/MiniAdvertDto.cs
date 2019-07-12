@@ -9,7 +9,7 @@ namespace CarRental.Services.Dto
         public int CarId { get; set; }
         public string CarBrand { get; set; }
         public int CarYear { get; set; }
-        
+        public int CarPrice { get; set; }
         public string CarModel { get; set; }
         public string CarLocation { get; set; }
     }
