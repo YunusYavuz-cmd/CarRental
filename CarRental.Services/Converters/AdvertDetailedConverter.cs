@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CarRental.Services.Converters
 { }
-    public static class DetailedAdvertConverter
+    public static class AdvertDetailedConverter
     {
         public static AdvertDetailedDto ToDetailedDto(this Car car)
         {
