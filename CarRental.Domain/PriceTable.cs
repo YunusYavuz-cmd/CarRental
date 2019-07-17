@@ -8,6 +8,6 @@ namespace CarRental.Domain
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int carPrice { get; set; }
+        public int CarPrice { get; set; }
     }
 }

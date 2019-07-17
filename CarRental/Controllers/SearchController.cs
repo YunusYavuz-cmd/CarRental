@@ -1,3 +1,4 @@
+using CarRental.Services.Dto;
 using CarRental.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,9 @@ namespace CarRental.Web.Controllers
         {
             _searchService = searchService;
         }
-        public IActionResult Index(string keywords)
+        public IActionResult Index(SearchRequestDto searchRequestDto) //
         {
-            var result = _searchService.Search(keywords);
+            var result = _searchService.Search(searchRequestDto);
             return View(result);
         }
     }

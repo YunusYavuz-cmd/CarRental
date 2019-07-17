@@ -6,5 +6,6 @@ namespace CarRental.Data.Interfaces
 {
     public interface IBookRepository
     {
+
     }
 }

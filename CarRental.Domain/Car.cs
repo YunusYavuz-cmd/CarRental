@@ -23,5 +23,6 @@ using System.Text;
         public virtual IList<Book> Books { get; set; }
         public virtual IList<PriceTable> PriceTables { get; set; }
 
+      
     }
 }

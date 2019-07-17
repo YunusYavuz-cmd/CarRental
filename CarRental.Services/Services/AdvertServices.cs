@@ -18,17 +18,15 @@ namespace CarRental.Services.Services
             _carRepository = carRepository;
 
         }
-        public AdvertListDto AdvertFilters(DateTime? startDate, DateTime? endDate, string carBrand, string carModel, string carColor, string carLocation,
+        public List<AdvertDetailedDto> AdvertFilters(DateTime? startDate, DateTime? endDate, string carBrand, string carModel, string carColor, string carLocation,
                                       int? maxPrice, int? minPrice, int? minKm, int? maxKm, int? carFuelTypes, bool? isManuel)
         {
             var carListWithFilters = _carRepository.FindFilters(startDate, endDate, carBrand, carModel, carColor, carLocation, maxPrice,
                 minPrice, minKm, maxKm, carFuelTypes, isManuel);
-            AdvertListDto advertListDto = new AdvertListDto
-            {
 
-                MiniAdvertList = carListWithFilters.Select(x => x.ToDto()).ToList()
-            };
-            return advertListDto;
+            return carListWithFilters.Select(x => x.ToDetailedDto()).ToList();
+
+            
         }
     }
 }

@@ -7,7 +7,7 @@ namespace CarRental.Services.Dto
 {
     public class SearchResult<T>
     {
-        public IList<T> Documents { get; set; }
+        public T Documents { get; set; } // changed it since it 
         public int Take
         {
             get => _take > 0 ? _take : 10;
@@ -18,10 +18,8 @@ namespace CarRental.Services.Dto
             get => _page > 0 ? _page : 1;
             set => _page = value;
         }
-
         public int TotalPage => Total > 0 ? (int) Math.Round((decimal) (Total / TotalPage), MidpointRounding.AwayFromZero) : 0;
-        public int Total { get; set; }
-        
+        public int Total { get; set; }   
         private int _take { get; set; }
         private int _page { get; set; }
     }

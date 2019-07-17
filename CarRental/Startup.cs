@@ -38,6 +38,7 @@ namespace CarRental.Web
             });
 
 
+            services.AddTransient<ISearchService, SearchService>();
 
             services.AddTransient<IHomePageServices,HomePageServices>();
             services.AddTransient<ICarRepository,CarRepository>();
@@ -73,7 +74,8 @@ namespace CarRental.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute("search", "/kiralik-{keywords}", new {controller = "Search", action = "Index"});
+                routes.MapRoute("search", "/kiralik-{modelName}", new {controller = "Search", action = "Index"});
+                routes.MapRoute("search", "/kiralik-arac", new { controller = "Search", action = "Index" });
             });
         }
     }
