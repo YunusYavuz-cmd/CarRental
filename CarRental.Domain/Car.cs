@@ -17,7 +17,7 @@ using System.Text;
         public string CarLocation { get; set; }
         public int CarYear { get; set; }
         public int CarKm { get; set; }
-        public CarFuelTypes CarFuelTypes { get; set; }
+        public int CarFuelTypes { get; set; }
         public bool IsManual { get; set; }
 
         public virtual IList<Book> Books { get; set; }

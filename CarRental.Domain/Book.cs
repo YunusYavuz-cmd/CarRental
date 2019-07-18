@@ -10,10 +10,7 @@ namespace CarRental.Domain
         public DateTime RentEndDate { get; set; }
         public int BeforeKm { get; set; }
         public int AfterKm { get; set; }
-        public int RentedCarNum { get; set; }
-
-
-
+        public int ReferenceNumber { get; set; }
         public virtual Car Car { get; set; }
         public virtual Customer Customer { get; set; }
 

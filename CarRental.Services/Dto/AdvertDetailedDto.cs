@@ -9,8 +9,10 @@ namespace CarRental.Services.Dto
 
         public string CarColor { get; set; }
         public int CarKm { get; set; }
-        public int CarFuelTypes { get; set; }   
+        public int CarFuelTypes { get; set; }
         public bool IsManual { get; set; }
+        public int ClickedNum { get; set; }
+        
 
     }
 }

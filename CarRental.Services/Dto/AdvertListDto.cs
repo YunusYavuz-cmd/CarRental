@@ -6,7 +6,7 @@ namespace CarRental.Services.Dto
 {
     public class AdvertListDto  
     {
-        public List<AdvertDetailedDto> MiniAdvertList { get; set; }
+        public List<AdvertDetailedDto> AdvertList { get; set; }
         //TODO : ANYTHING ELSE TO ADD FOR ADS LIST
     }
 }

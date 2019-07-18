@@ -20,19 +20,14 @@ namespace CarRental.Services.Services
         {
             var cars=CarRep.FindFilters(searchRequestDto.StartDate, searchRequestDto.EndDate, searchRequestDto.CarBrand, searchRequestDto.CarModel,
                 searchRequestDto.CarColor, searchRequestDto.CarLocation, searchRequestDto.MaxPrice, searchRequestDto.MinPrice, searchRequestDto.MinKm, searchRequestDto.MaxKm, searchRequestDto.CarFuelTypes, searchRequestDto.IsManual);
-
-      
-
-
             if (cars.Count== 0) 
                 return new OperationResult<SearchResult<AdvertListDto>>(false, "Aradýðýnýz kriterde araç bulunamadý");
 
             return new OperationResult<SearchResult<AdvertListDto>>(new SearchResult<AdvertListDto> {
                 Documents = new AdvertListDto {
                     AdvertList = cars.Select(x => x.ToDetailedDto()).ToList(),
-
                 },
-                Total =cars.Count
+                Total = cars.Count
             });
 
         }

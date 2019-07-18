@@ -9,15 +9,18 @@ namespace CarRental.Data.Repositories
 {
     public class BookRepository: Repository<Book> , IBookRepository
     {
-        private readonly RentACarContext _context;
+    
         public BookRepository(RentACarContext context) : base(context)
         { 
-            _context = context;
         }
        
         public List<Book> FindAllBooks()
         {
-            return _context.Book.ToList();
+            return DbSet.ToList();
+        }
+        public Book GetBookByReference(int referenceNumber)
+        {
+            return DbSet.Where(x => x.ReferenceNumber == referenceNumber).FirstOrDefault();
         }
   
     }

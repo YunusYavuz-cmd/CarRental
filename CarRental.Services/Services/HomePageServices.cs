@@ -1,5 +1,6 @@
 ﻿using CarRental.Data;
 using CarRental.Data.Interfaces;
+using CarRental.Domain;
 using CarRental.Services.Converters;
 using CarRental.Services.Dto;
 using System;
@@ -20,6 +21,10 @@ namespace CarRental.Services.Services
         {
             var cars = CarRep.FindRandomCars(2);
             return cars.Select(x => x.ToDto()).ToList();
+        }
+        public void AddCarTest(Car car)
+        {
+            CarRep.AddAndSave(car);
         }
     }
 }

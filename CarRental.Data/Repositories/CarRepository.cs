@@ -36,11 +36,11 @@ namespace CarRental.Data.Repositories
             if (carFuelTypes.HasValue)
             {
                 if (carFuelTypes == 1)
-                    query = query.Where(x => x.CarFuelTypes == (CarFuelTypes)carFuelTypes);
+                    query = query.Where(x => x.CarFuelTypes == carFuelTypes);
                 else if (carFuelTypes == 2)
-                    query = query.Where(x => x.CarFuelTypes == (CarFuelTypes)carFuelTypes);
+                    query = query.Where(x => x.CarFuelTypes == carFuelTypes);
                 else if (carFuelTypes == 3)
-                    query = query.Where(x => x.CarFuelTypes == (CarFuelTypes)carFuelTypes);
+                    query = query.Where(x => x.CarFuelTypes == carFuelTypes);
             }
             if (startDate.HasValue && endDate.HasValue)
             {
@@ -61,6 +61,31 @@ namespace CarRental.Data.Repositories
         public List<Car> FindRandomCars(int randNum)
         {
                return DbSet.OrderBy(r => Guid.NewGuid()).Take(randNum).ToList();
+        }
+        public Car GetCarById(int carId)
+        {
+            return DbSet.Where(x => x.Id == carId).FirstOrDefault();
+        }
+        public bool IsAvaible(int carId,DateTime startDate,DateTime endDate)
+        {
+            Car car= DbSet.Where(x =>x.Id==carId && x.Books.Any(y => (y.RentEndDate < startDate) || (y.RentStartDate>endDate) )).FirstOrDefault();  
+            if (car == null)
+                return false;
+            return true;
+        }
+        public void AddBookToCar(int carId,Book book)
+        {
+            Car car = DbSet.Where(x => x.Id == carId).FirstOrDefault();
+            if (car == null)
+                throw new Exception("Car does not exist in Database");
+            else {
+
+                if (car.Books == null)
+                    car.Books = new List<Book>();
+
+                car.Books.Add(book);
+
+            }
         }
     }
 }

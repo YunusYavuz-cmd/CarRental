@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarRental.Data;
 using CarRental.Data.Interfaces;
 using CarRental.Data.Repositories;
+using CarRental.Services.Interfaces;
 using CarRental.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,9 +40,11 @@ namespace CarRental.Web
 
 
             services.AddTransient<ISearchService, SearchService>();
+            services.AddTransient<IBookServices, BookServices>();
 
             services.AddTransient<IHomePageServices,HomePageServices>();
             services.AddTransient<ICarRepository,CarRepository>();
+            services.AddTransient<IBookRepository, BookRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
