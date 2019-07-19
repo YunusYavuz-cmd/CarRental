@@ -53,11 +53,13 @@ namespace CarRental.Data.Repositories
         public List<Car> FindAllCars()
         {
             return DbSet.ToList();               
-        }   
-        public List<Car> FindCarsBetweenPrice(int minPrice,int maxPrice)
-        {
-            return null;        //price table olcaksa ordan?
         }
+        public int? FindCarPriceBetweenDates(int carId, DateTime startDate,DateTime endDate)
+        {
+         
+        //DbSet.Where(x => x.Id == carId && x.PriceTables.Select(y => (y.EndDate < startDate) || (y.StartDate > endDate)).FirstOrDefault());     
+            return null;
+                }
         public List<Car> FindRandomCars(int randNum)
         {
                return DbSet.OrderBy(r => Guid.NewGuid()).Take(randNum).ToList();

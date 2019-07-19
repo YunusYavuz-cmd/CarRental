@@ -22,10 +22,9 @@ namespace CarRental.Services.Services
             var cars = CarRep.FindRandomCars(2);
             return cars.Select(x => x.ToDto()).ToList();
         }
-        public void AddCarTest(Car car)
-        {
-            CarRep.AddAndSave(car);
-        }
+        //public void AddCarTest(Car car)
+        //{
+        //    CarRep.AddAndSave(car);
+        //}
     }
 }
-    

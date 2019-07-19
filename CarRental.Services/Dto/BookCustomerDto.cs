@@ -13,6 +13,7 @@ namespace CarRental.Services.Dto
         public string CustomerPhoneNumber { get; set; }
         public string CustomerName { get; set; }
         public int CustomerAge { get; set; }
-        public int CustomerLicenseAge { get; set; } 
+        public int CustomerLicenseAge { get; set; }
+        public int carId { get; set; }
     }
 }

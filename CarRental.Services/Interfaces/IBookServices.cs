@@ -1,4 +1,6 @@
-﻿using CarRental.Services.Dto;
+﻿using CarRental.Domain;
+using CarRental.Services.Dto;
+using CarRental.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +10,8 @@ namespace CarRental.Services.Interfaces
     public interface IBookServices
     {
 
-        void AddBooking(int carId, BookCustomerDto bookCustomerDto);
-        BookCustomerDto GetBookInfo(int referenceNumber);
+        IOperationResult<BookInfoDto> AddBooking(BookCustomerDto bookCustomerDto);
+        BookInfoDto GetBookInfo(int referenceNumber);
+       //private create booking
     }
 }

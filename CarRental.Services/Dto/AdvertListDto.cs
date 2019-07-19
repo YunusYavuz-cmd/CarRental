@@ -8,5 +8,6 @@ namespace CarRental.Services.Dto
     {
         public List<AdvertDetailedDto> AdvertList { get; set; }
         //TODO : ANYTHING ELSE TO ADD FOR ADS LIST
+        //search result buraya eklenebilir? 
     }
 }
