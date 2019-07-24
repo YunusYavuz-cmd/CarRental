@@ -41,8 +41,8 @@ namespace CarRental.Web
 
             services.AddTransient<ISearchService, SearchService>();
             services.AddTransient<IBookServices, BookServices>();
-
             services.AddTransient<IHomePageServices,HomePageServices>();
+            services.AddTransient<IAdvertServices, AdvertServices>();
             services.AddTransient<ICarRepository,CarRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
 

@@ -11,6 +11,9 @@ namespace CarRental.Domain
         public int BeforeKm { get; set; }
         public int AfterKm { get; set; }
         public int ReferenceNumber { get; set; }
+        public int CarId { get; set; }  
+        public int CustomerId { get; set; }
+
         public virtual Car Car { get; set; }
         public virtual Customer Customer { get; set; }
 

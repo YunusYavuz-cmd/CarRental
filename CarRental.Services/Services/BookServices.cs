@@ -3,10 +3,8 @@ using CarRental.Domain;
 using CarRental.Services.Converters;
 using CarRental.Services.Dto;
 using CarRental.Services.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 
 namespace CarRental.Services.Services
 {
@@ -25,7 +23,7 @@ namespace CarRental.Services.Services
             {
                 Book book = CreateBooking(bookCustomerDto);
                 BookRep.AddAndSave(book);
-                CarRep.AddBookToCar(bookCustomerDto.carId, book);
+            //    CarRep.AddBookToCar(bookCustomerDto.carId, book);
                 return new OperationResult<BookInfoDto>(true, "Successfully booked", (int)HttpStatusCode.OK, book.ToBookInfoDto());
             }
             else
@@ -37,12 +35,13 @@ namespace CarRental.Services.Services
         private Book CreateBooking(BookCustomerDto bookCustomerDto)
         {
 
-            Car car = CarRep.GetCarById(bookCustomerDto.carId);
+            var car = CarRep.GetCarById(bookCustomerDto.carId);
+           
             List<CustomerProperties> customerProperties = new List<CustomerProperties> {
                    new CustomerProperties{TypeId=1,Value=bookCustomerDto.CustomerAge },
                    new CustomerProperties{TypeId=2,Value=bookCustomerDto.CustomerLicenseAge }
                 };
-            Customer customer = new Customer
+            var customer = new Customer //TODO: check customer exist
             {
                 CustomerEmail = bookCustomerDto.CustomerEmail,
                 CustomerPhoneNumber = bookCustomerDto.CustomerPhoneNumber,
@@ -50,7 +49,7 @@ namespace CarRental.Services.Services
                 CustomerProperties = customerProperties
 
             };
-            Book book = new Book
+            var book = new Book
             {
                 RentStartDate = bookCustomerDto.RentStartDate,
                 RentEndDate = bookCustomerDto.RentEndDate,
@@ -58,9 +57,11 @@ namespace CarRental.Services.Services
                 BeforeKm = car.CarKm,
                 AfterKm = car.CarKm,
                 Customer = customer,
-                Car = car
-
+                CarId = car.Id  //gerek varmı aşağıdaki A comentinede gerek varmı???
             };
+            //;if (car.Books == null) //A:gerek varmı ?
+            //    car.Books = new List<Book>();
+            //car.Books.Add(book);
             return book;
         }
         public BookInfoDto GetBookInfo(int referenceNumber)

@@ -44,7 +44,7 @@ namespace CarRental.Data.Repositories
             }
             if (startDate.HasValue && endDate.HasValue)
             {
-                query = query.Where(x => x.Books.Any(y => y.RentEndDate > startDate && y.RentStartDate < endDate));
+                query = query.Where(x => x.Books.Any(y => (y.RentEndDate < startDate ) || (y.RentStartDate > endDate)));
             }
             if (isManuel.HasValue)
                 query = query.Where(x => x.IsManual == isManuel);
@@ -70,7 +70,7 @@ namespace CarRental.Data.Repositories
         }
         public bool IsAvaible(int carId,DateTime startDate,DateTime endDate)
         {
-            Car car= DbSet.Where(x =>x.Id==carId && x.Books.Any(y => (y.RentEndDate < startDate) || (y.RentStartDate>endDate) )).FirstOrDefault();  
+            Car car= DbSet.Where(x =>x.Id==carId && x.Books.All(y => (y.RentEndDate < startDate) || (y.RentStartDate>endDate) )).FirstOrDefault();  
             if (car == null)
                 return false;
             return true;
