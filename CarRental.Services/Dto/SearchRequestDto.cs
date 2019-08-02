@@ -13,7 +13,7 @@ namespace CarRental.Services.Dto
         public int? MinPrice { get; set; } = null;
         public int? MinKm { get; set; } = null;
         public int? MaxKm { get; set; } = null;
-
+        public int? CarStyle { get; set; } = null;
         public string CarModel { get; set; } = null;
         public string CarLocation { get; set; } = null;
         public string CarColor { get; set; } = null;

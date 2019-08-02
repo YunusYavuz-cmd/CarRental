@@ -4,11 +4,10 @@ using System.Text;
 
 namespace CarRental.Services.Dto
 {
-    public class BookCustomerDto
+    public class BookRequestDto
     {
         public DateTime RentStartDate { get; set; }
         public DateTime RentEndDate { get; set; }
-        public int ReferenceNumber { get; set; }
         public string CustomerEmail { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public string CustomerName { get; set; }

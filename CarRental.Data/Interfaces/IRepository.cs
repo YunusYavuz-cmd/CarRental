@@ -13,6 +13,7 @@ namespace CarRental.Data.Interfaces
         int AddAndSave(T entity);
         int UpdateAndSave(T entity);
         int Save();
+        int DeleteAndSave(T entity);
         //T FindById(long id);
         //T Add(T entity);
         //T Delete(T entity);

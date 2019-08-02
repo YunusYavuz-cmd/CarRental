@@ -5,10 +5,115 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\assets\**" />
+    <Content Remove="wwwroot\assets\**" />
+    <EmbeddedResource Remove="wwwroot\assets\**" />
+    <None Remove="wwwroot\assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\Index.cshtml" />
+    <Content Remove="wwwroot\style.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="wwwroot\assets\css\bootstrap.min.css" />
+    <None Include="wwwroot\assets\css\font-awesome.css" />
+    <None Include="wwwroot\assets\css\plugins\animate.css" />
+    <None Include="wwwroot\assets\css\plugins\gijgo.css" />
+    <None Include="wwwroot\assets\css\plugins\magnific-popup.css" />
+    <None Include="wwwroot\assets\css\plugins\owl.carousel.min.css" />
+    <None Include="wwwroot\assets\css\plugins\slicknav.min.css" />
+    <None Include="wwwroot\assets\css\plugins\vegas.min.css" />
+    <None Include="wwwroot\assets\css\reset.css" />
+    <None Include="wwwroot\assets\css\responsive.css" />
+    <None Include="wwwroot\assets\css\style.css" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\img\404.png" />
+    <None Include="wwwroot\assets\img\article\arti-thumb-1.jpg" />
+    <None Include="wwwroot\assets\img\article\arti-thumb-2.jpg" />
+    <None Include="wwwroot\assets\img\article\arti-thumb-3.jpg" />
+    <None Include="wwwroot\assets\img\article\arti-thumb-4.jpg" />
+    <None Include="wwwroot\assets\img\banner.jpg" />
+    <None Include="wwwroot\assets\img\caret-cion.png" />
+    <None Include="wwwroot\assets\img\car\car-1.jpg" />
+    <None Include="wwwroot\assets\img\car\car-2.jpg" />
+    <None Include="wwwroot\assets\img\car\car-3.jpg" />
+    <None Include="wwwroot\assets\img\car\car-4.jpg" />
+    <None Include="wwwroot\assets\img\car\car-5.jpg" />
+    <None Include="wwwroot\assets\img\car\car-6.jpg" />
+    <None Include="wwwroot\assets\img\client\client-pic-1.jpg" />
+    <None Include="wwwroot\assets\img\client\client-pic-2.jpg" />
+    <None Include="wwwroot\assets\img\client\client-pic-3.jpg" />
+    <None Include="wwwroot\assets\img\driver\driver-1.jpg" />
+    <None Include="wwwroot\assets\img\driver\driver-2.jpg" />
+    <None Include="wwwroot\assets\img\driver\driver-3.jpg" />
+    <None Include="wwwroot\assets\img\driver\driver-4.jpg" />
+    <None Include="wwwroot\assets\img\driver\driver-5.jpg" />
+    <None Include="wwwroot\assets\img\driver\driver-6.jpg" />
+    <None Include="wwwroot\assets\img\funfact-bg.jpg" />
+    <None Include="wwwroot\assets\img\home-2-about.png" />
+    <None Include="wwwroot\assets\img\logo.png" />
+    <None Include="wwwroot\assets\img\mobile-app.png" />
+    <None Include="wwwroot\assets\img\page-title.jpg" />
+    <None Include="wwwroot\assets\img\partner\partner-logo-1.png" />
+    <None Include="wwwroot\assets\img\partner\partner-logo-2.png" />
+    <None Include="wwwroot\assets\img\partner\partner-logo-3.png" />
+    <None Include="wwwroot\assets\img\partner\partner-logo-4.png" />
+    <None Include="wwwroot\assets\img\partner\partner-logo-5.png" />
+    <None Include="wwwroot\assets\img\preloader.gif" />
+    <None Include="wwwroot\assets\img\pricing-bg.jpg" />
+    <None Include="wwwroot\assets\img\scroll-top.png" />
+    <None Include="wwwroot\assets\img\services\service-icon-1.png" />
+    <None Include="wwwroot\assets\img\services\service-icon-2.png" />
+    <None Include="wwwroot\assets\img\services\service-icon-3.png" />
+    <None Include="wwwroot\assets\img\services\service-icon-4.png" />
+    <None Include="wwwroot\assets\img\services\service-icon-5.png" />
+    <None Include="wwwroot\assets\img\services\service-icon-6.png" />
+    <None Include="wwwroot\assets\img\slider-img\88.jpg" />
+    <None Include="wwwroot\assets\img\slider-img\slider-img-1.jpg" />
+    <None Include="wwwroot\assets\img\slider-img\slider-img-17jpg" />
+    <None Include="wwwroot\assets\img\slider-img\slider-img-2.jpg" />
+    <None Include="wwwroot\assets\img\slider-img\slider-img-3.jpg" />
+    <None Include="wwwroot\assets\img\slider-img\slider-img-4.jpg" />
+    <None Include="wwwroot\assets\img\team\team-mem-1.png" />
+    <None Include="wwwroot\assets\img\team\team-mem-2.png" />
+    <None Include="wwwroot\assets\img\team\team-mem-3.png" />
+    <None Include="wwwroot\assets\img\team\team-mem-4.png" />
+    <None Include="wwwroot\assets\img\team\team-mem-thumb-1.png" />
+    <None Include="wwwroot\assets\img\team\team-mem-thumb-2.png" />
+    <None Include="wwwroot\assets\img\team\team-mem-thumb-3.png" />
+    <None Include="wwwroot\assets\img\team\team-mem-thumb-4.png" />
+    <None Include="wwwroot\assets\img\we-do\service1-img.png" />
+    <None Include="wwwroot\assets\img\we-do\service2-img.png" />
+    <None Include="wwwroot\assets\img\we-do\service3-img.png" />
+    <None Include="wwwroot\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\assets\js\jquery-migrate.min.js" />
+    <None Include="wwwroot\assets\js\main.js" />
+    <None Include="wwwroot\assets\js\plugins\counterup.min.js" />
+    <None Include="wwwroot\assets\js\plugins\gijgo.js" />
+    <None Include="wwwroot\assets\js\plugins\isotope.min.js" />
+    <None Include="wwwroot\assets\js\plugins\magnific-popup.min.js" />
+    <None Include="wwwroot\assets\js\plugins\mb.YTPlayer.js" />
+    <None Include="wwwroot\assets\js\plugins\owl.carousel.min.js" />
+    <None Include="wwwroot\assets\js\plugins\slicknav.min.js" />
+    <None Include="wwwroot\assets\js\plugins\vegas.min.js" />
+    <None Include="wwwroot\assets\js\plugins\waypoints.min.js" />
+    <None Include="wwwroot\assets\js\popper.min.js" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
 

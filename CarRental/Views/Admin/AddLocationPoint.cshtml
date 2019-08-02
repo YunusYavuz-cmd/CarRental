@@ -1,0 +1,27 @@
+﻿@model CarRental.Services.Dto.AddDeleteLocationPointDto
+@{
+    Layout = null;
+    SelectListItem[] locations = ViewBag.LocationsList;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddLocationPoint</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div>
+            <div>Şehir: @Html.DropDownListFor(m => m.CityLocation, (IEnumerable<SelectListItem>)ViewBag.locations, "Select Location")</div>
+            <div>Teslim Noktası: @Html.TextBoxFor(m => m.LocationPoint)</div>
+            <input type="submit" value="Create LocationPoint" />
+
+        </div>
+    }
+
+
+    </body>
+</html>

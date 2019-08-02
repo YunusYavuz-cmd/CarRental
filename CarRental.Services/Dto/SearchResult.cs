@@ -18,7 +18,7 @@ namespace CarRental.Services.Dto
             get => _page > 0 ? _page : 1;
             set => _page = value;
         }
-        public int TotalPage => Total > 0 ? (int) Math.Round((decimal) (Total / Take /*was Totalpage*/), MidpointRounding.AwayFromZero) : 0;
+        public int TotalPage => Total > 0 ? (int) Math.Round((decimal) (Total / _take ), MidpointRounding.AwayFromZero) : 0;
         public int Total { get; set; }   
         private int _take { get; set; }
         private int _page { get; set; }

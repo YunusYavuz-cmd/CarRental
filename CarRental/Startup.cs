@@ -41,9 +41,11 @@ namespace CarRental.Web
 
             services.AddTransient<ISearchService, SearchService>();
             services.AddTransient<IBookServices, BookServices>();
-
             services.AddTransient<IHomePageServices,HomePageServices>();
             services.AddTransient<ICarRepository,CarRepository>();
+            services.AddTransient<ILocationRepository, LocationRepository>();
+            services.AddTransient<IAdminServices, AdminServices>();
+            services.AddTransient<ILocationPointRepository, LocationPointRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

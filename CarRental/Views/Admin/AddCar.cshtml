@@ -1,0 +1,33 @@
+﻿@model CarRental.Services.Dto.AddCarDto
+@{
+    Layout = null;
+    ViewBag.Title = "Add Car";
+    SelectListItem[] locations = ViewBag.LocationsList; 
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddCar</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+    <div>
+        <div>Car Model: @Html.TextBoxFor(m => m.CarModel)</div>
+        <div>Car Brand: @Html.TextBoxFor(m => m.CarBrand)</div>
+        <div>Car Location: @Html.DropDownListFor(m=>m.CarLocation , (IEnumerable<SelectListItem>)ViewBag.locations, "Select Location")</div>
+        <div>Car Km: @Html.TextBoxFor(m => m.CarKm)</div>
+        <div>Car FuelTypes: @Html.TextBoxFor(m => m.CarFuelTypes)</div>
+        <div>Car isManuel: @Html.TextBoxFor(m => m.IsManual)</div>
+        <div>Car Year: @Html.TextBoxFor(m => m.CarYear)</div>
+        <div>Car Color : @Html.TextBoxFor(m => m.CarColor)</div>
+        <div>Car Style: @Html.TextBoxFor(m => m.CarStyle)</div>
+
+        <input type="submit" value="Create Car" />
+    </div>
+    }
+</body>
+</html>

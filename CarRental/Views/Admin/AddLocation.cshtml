@@ -1,0 +1,44 @@
+﻿@model string
+@{
+    Layout = null;
+    ViewBag.Title = "Add Location";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddLocation</title>
+</head>
+@*<script>
+
+    self.Employer = ko.observable();
+    self.AboutEmployer = function (id) {
+            $.ajax({                    
+                    Url.Action("GetEmployer", "Home")
+                    cache: false,
+                    type: 'GET',
+                    data: "{id:" + id + "}",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",   
+                    success: function (data) {
+                        self.Employer(data);
+                    }
+                }).fail(
+                function () {
+                    alert("Fail");
+                });
+         };
+
+</script>*@
+<body>
+    @using (Html.BeginForm())
+    {
+        <div>
+            <div>Şehir: <input type="text" id="cityLocation" name="cityLocation" /></div>
+            <input type="submit" value="Create Location" />
+        </div>
+    }
+</body>
+</html>

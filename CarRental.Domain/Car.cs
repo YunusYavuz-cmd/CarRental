@@ -18,11 +18,17 @@ using System.Text;
         public int CarYear { get; set; }
         public int CarKm { get; set; }
         public int CarFuelTypes { get; set; }
-        public bool IsManual { get; set; }          
-
+        public bool IsManual { get; set; }
+        public CarStyles CarStyle { get; set; }
+        public int LocationId { get; set; }
         public virtual IList<Book> Books { get; set; }
         public virtual IList<PriceTable> PriceTables { get; set; }
-
-      
+        public virtual Location Location { get; set; }
+        public enum CarStyles {
+            otomobil=1,
+            araziPick=2,
+            minivan=3,
+            klasikArac=4
+        }
     }
 }

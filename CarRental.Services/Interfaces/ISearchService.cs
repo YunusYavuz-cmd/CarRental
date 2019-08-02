@@ -5,6 +5,6 @@ namespace CarRental.Services.Services
 {
     public interface ISearchService
     {
-        IOperationResult<SearchResult<AdvertListDto>> Search(SearchRequestDto searchRequestDto);
+        OperationResult<SearchResult<AdvertListDto>> Search(SearchRequestDto searchRequestDto);
     }
 }

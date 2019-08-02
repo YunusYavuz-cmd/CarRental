@@ -7,7 +7,7 @@ namespace CarRental.Data.Interfaces
 {
     public interface IBookRepository: IRepository<Book>
     {
-        Book GetBookByReference(int referenceNumber);
+        Book GetBookByReference(string referenceNumber);
         List<Book> FindAllBooks();
     }
 }

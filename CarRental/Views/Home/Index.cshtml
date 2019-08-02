@@ -1,40 +1,796 @@
-﻿@model List<CarRental.Services.Dto.MiniAdvertDto>
+﻿<!DOCTYPE html>
+<html class="no-js" lang="zxx">
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--=== Favicon ===-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <title>Cardoor - Yunus Yavuz</title>
+
+    <!--=== Bootstrap CSS ===-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!--=== Vegas Min CSS ===-->
+
+    <link href="assets/css/plugins/vegas.min.css" rel="stylesheet">
+    <!--=== Slicknav CSS ===-->
+    <link href="assets/css/plugins/slicknav.min.css" rel="stylesheet">
+    <!--=== Magnific Popup CSS ===-->
+    <link href="assets/css/plugins/magnific-popup.css" rel="stylesheet">
+    <!--=== Owl Carousel CSS ===-->
+    <link href="assets/css/plugins/owl.carousel.min.css" rel="stylesheet">
+    <!--=== Gijgo CSS ===-->
+    <link href="assets/css/plugins/gijgo.css" rel="stylesheet">
+    <!--=== FontAwesome CSS ===-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <!--=== Theme Reset CSS ===-->
+    <link href="assets/css/reset.css" rel="stylesheet">
+    <!--=== Main Style CSS ===-->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+    <!--=== Responsive CSS ===-->
+    <link href="assets/css/responsive.css" rel="stylesheet">
 
 
-<h1>List of Customers</h1>
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
-{
-    <table border="1" cellpadding="9">
-        @for (int i = 0; i < Model.Count; i++)
-        {
-            <tr>
-                <td>
-                    @Html.TextBox("customers[" + @i + "].CustomerID",
-                              Model[i].CarModel,
-                              new { @readonly = "readonly" })
-            </td>
-            <td>
-                @Html.TextBox("customers[" + @i + "].CompanyName",
-                          Model[i].CarBrand)
-        </td>
-        <td>
-            @Html.TextBox("customers[" + @i + "].ContactName",
-                      Model[i].CarLocation)
-    </td>
-    <td>
-        @Html.TextBox("customers[" + @i + "].Country",
-                  Model[i].CarYear)
-</td>
-</tr>
-}
-        <tr>
-            <td colspan="4">
-                <input type="submit" value="Submit" />
-            </td>
-        </tr>
-    </table>
-}
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="loader-active">
+
+    <!--== Preloader Area Start ==-->
+    <div class="preloader">
+        <div class="preloader-spinner">
+            <div class="loader-content">
+                <img src="assets/img/preloader.gif" alt="JSOFT">
+            </div>
+        </div>
+    </div>
+    <!--== Preloader Area End ==-->
+    <!--== Header Area Start ==-->
+    <header id="header-area" class="fixed-top">
+        <!--== Header Top Start ==-->
+        <div id="header-top" class="d-none d-xl-block">
+            <div class="container">
+                <div class="row">
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-left">
+                        <i class="fa fa-map-marker"></i> 802/2, Kozyatağı, İstanbul
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-center">
+                        <i class="fa fa-mobile"></i> +90 543 473 08 33
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-center">
+                        <i class="fa fa-clock-o"></i> Pzt-Cum 09.00 - 17.00
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Social Icons Start ==-->
+                    <div class="col-lg-3 text-right">
+                        <div class="header-social-icons">
+                            <a href="#"><i class="fa fa-behance"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <!--== Social Icons End ==-->
+                </div>
+            </div>
+        </div>
+        <!--== Header Top End ==-->
+        <!--== Header Bottom Start ==-->
+        <div id="header-bottom">
+            <div class="container">
+                <div class="row">
+                    <!--== Logo Start ==-->
+                    <div class="col-lg-4">
+                        <a href="index.html" class="logo">
+                            <img src="assets/img/logo.png" alt="JSOFT">
+                        </a>
+                    </div>
+                    <!--== Logo End ==-->
+                    <!--== Main Menu Start ==-->
+                    <div class="col-lg-8 d-none d-xl-block">
+                        <nav class="mainmenu alignright">
+                            <ul>
+                                <li class="active"><a href="#">Anasayfa</a> </li>
+                                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                                <li>
+                                    <a href="#">Servislerimiz</a>
+                                    <ul>
+                                        <li><a href="rez-sorgu.html">Rezervasyon Sorgulama</a></li>
+                                        <li><a href="servisler.html">Diğer Servisler</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="kiralik-arac.html">Araçlar</a></li>
+                                <li>
+                                    <a href="blog.html">Blog</a>
+                                </li>
+                                <li><a href="iletisim.html">İletişim</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--== Main Menu End ==-->
+                </div>
+            </div>
+        </div>
+        <!--== Header Bottom End ==-->
+    </header>
+    <!--== Header Area End ==-->
+    <!--== SlideshowBg Area Start ==-->
+    <section id="slideslow-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="slideshowcontent">
+                        <div class="display-table">
+                            <div class="display-table-cell">
+                                <h1>Rent A Car</h1>
+                                <p> </p>
+
+                                <div class="book-ur-car">
+                                    <form action="index.html">
+                                        <div class="pick-location bookinput-item">
+                                            <select class="custom-select">
+                                                <option selected>Alım Noktası</option>
+                                                <option value="1">Dhaka</option>
+                                                <option value="2">Comilla</option>
+                                                <option value="3">Barishal</option>
+                                                <option value="3">Rangpur</option>
+                                            </select>
+                                        </div>
+                                        <div class="car-choose bookinput-item">
+                                            <select class="custom-select">
+                                                <option selected>Teslim Noktası</option>
+                                                <option value="1">BMW</option>
+                                                <option value="2">Audi</option>
+                                                <option value="3">Lexus</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="pick-date bookinput-item">
+                                            <input id="startDate2" placeholder="Pick Date" />
+                                        </div>
+
+                                        <div class="retern-date bookinput-item">
+                                            <input id="endDate2" placeholder="Return Date" />
+                                        </div>
+
+
+                                        <div class="bookcar-btn bookinput-item">
+                                            <button type="submit">Araç Bul</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== SlideshowBg Area End ==-->
+    <!--== About Us Area Start ==-->
+    <!--== About Us Area End ==-->
+    <!--== Partner Area Start ==-->
+    <div id="partner-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="partner-content-wrap">
+                        <!-- Single Partner Start -->
+                        <div class="single-partner">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <img src="assets/img/partner/partner-logo-1.png" alt="JSOFT">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Partner End -->
+                        <!-- Single Partner Start -->
+                        <div class="single-partner">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <img src="assets/img/partner/partner-logo-2.png" alt="JSOFT">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Partner End -->
+                        <!-- Single Partner Start -->
+                        <div class="single-partner">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <img src="assets/img/partner/partner-logo-3.png" alt="JSOFT">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Partner End -->
+                        <!-- Single Partner Start -->
+                        <div class="single-partner">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <img src="assets/img/partner/partner-logo-4.png" alt="JSOFT">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Partner End -->
+                        <!-- Single Partner Start -->
+                        <div class="single-partner">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <img src="assets/img/partner/partner-logo-5.png" alt="JSOFT">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Partner End -->
+                        <!-- Single Partner Start -->
+                        <div class="single-partner">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <img src="assets/img/partner/partner-logo-1.png" alt="JSOFT">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Partner End -->
+                        <!-- Single Partner Start -->
+                        <div class="single-partner">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <img src="assets/img/partner/partner-logo-4.png" alt="JSOFT">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Partner End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--== Partner Area End ==-->
+    <!--== Services Area Start ==-->
+    <section id="service-area" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Section Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>Servislerimiz</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>RentACar</p>
+                    </div>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <!-- Service Content Start -->
+            <div class="row">
+                <div class="col-lg-11 m-auto text-center">
+                    <div class="service-container-wrap">
+                        <!-- Single Service Start -->
+                        <div class="service-item">
+                            <i class="fa fa-taxi"></i>
+                            <h3>Araç Kiralama</h3>
+                            <p>Araç Kiralama ile dünyayı keşfet</p>
+                        </div>
+                        <!-- Single Service End -->
+                        <!-- Single Service Start -->
+                        <div class="service-item">
+                            <i class="fa fa-cog"></i>
+                            <h3>Araç Servisi</h3>
+                            <p>Aracınız için özel servis</p>
+                        </div>
+                        <!-- Single Service End -->
+                        <!-- Single Service Start -->
+                        <div class="service-item">
+                            <i class="fa fa-map-marker"></i>
+                            <h3>TAXI Hizmeti</h3>
+                            <p>Özel araçlarla taxi hizmeti.</p>
+                        </div>
+                        <!-- Single Service End -->
+                        <!-- Single Service Start -->
+                        <div class="service-item">
+                            <i class="fa fa-life-ring"></i>
+                            <h3>Sigorta Paketleri</h3>
+                            <p>Güvenli bir yolculuk için sigorta</p>
+                        </div>
+                        <!-- Single Service End -->
+                        <!-- Single Service Start -->
+                        <div class="service-item">
+                            <i class="fa fa-phone"></i>
+                            <h3>Şöförlü Kiralama</h3>
+                            <p>Şöförlü Araç Kiralama hizmeti</p>
+                        </div>
+                        <!-- Single Service End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Service Content End -->
+        </div>
+    </section>
+    <!--== Services Area End ==-->
+    <!--== Fun Fact Area Start ==-->
+    <section id="funfact-area" class="overlay section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 col-md-12 m-auto">
+                    <div class="funfact-content-wrap">
+                        <div class="row">
+                            <!-- Single FunFact Start -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-funfact">
+                                    <div class="funfact-icon">
+                                        <i class="fa fa-smile-o"></i>
+                                    </div>
+                                    <div class="funfact-content">
+                                        <p><span class="counter">10500</span>+</p>
+                                        <h4>Müşteri</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FunFact End -->
+                            <!-- Single FunFact Start -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-funfact">
+                                    <div class="funfact-icon">
+                                        <i class="fa fa-car"></i>
+                                    </div>
+                                    <div class="funfact-content">
+                                        <p><span class="counter">250</span>+</p>
+                                        <h4>Araç</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FunFact End -->
+                            <!-- Single FunFact Start -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-funfact">
+                                    <div class="funfact-icon">
+                                        <i class="fa fa-bank"></i>
+                                    </div>
+                                    <div class="funfact-content">
+                                        <p><span class="counter">550</span>+</p>
+                                        <h4>Teslim noktası</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FunFact End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== Fun Fact Area End ==-->
+    <!--== Choose Car Area Start ==-->
+    <section id="choose-car" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Section Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>Aracını Seç</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>RentACar</p>
+                    </div>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <div class="row">
+                <!-- Choose Area Content Start -->
+                <div class="col-lg-12">
+                    <div class="choose-ur-cars">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <!-- Choose Filtering Menu Start -->
+                                <div class="home2-car-filter">
+                                    <a href="#" data-filter="*" class="active">Tüm Araçlar</a>
+                                    <a href="#" data-filter=".con">Otomobil</a>
+                                    <a href="#" data-filter=".hat">Arazi-Pick-up</a>
+                                    <a href="#" data-filter=".mpv">Minivan</a>
+                                    <a href="#" data-filter=".sedan">Klasik Araçlar</a>
+                                </div>
+                                <!-- Choose Filtering Menu End -->
+                            </div>
+
+                            <div class="col-lg-9">
+                                <!-- Choose Cars Content-wrap -->
+                                <div class="row popular-car-gird">
+
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-6 col-md-6 con suv mpv">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="assets/img/car/car-1.jpg">
+                                                    <img src="assets/img/car/car-1.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Dodge Ram 1500</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> $55/day</span>
+                                                </h3>
+
+                                                <h5>HATCHBACK</h5>
+
+                                                <div class="p-car-feature">
+                                                    <a href="#">2017</a>
+                                                    <a href="#">manual</a>
+                                                    <a href="#">AIR CONDITION</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-6 col-md-6 hat sedan">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="assets/img/car/car-2.jpg">
+                                                    <img src="assets/img/car/car-2.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Dodge Ram 1500</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> $55/day</span>
+                                                </h3>
+
+                                                <h5>HATCHBACK</h5>
+
+                                                <div class="p-car-feature">
+                                                    <a href="#">2017</a>
+                                                    <a href="#">manual</a>
+                                                    <a href="#">AIR CONDITION</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-6 col-md-6 suv con mpv">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="assets/img/car/car-3.jpg">
+                                                    <img src="assets/img/car/car-3.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Dodge Ram 1500</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> $55/day</span>
+                                                </h3>
+
+                                                <h5>HATCHBACK</h5>
+
+                                                <div class="p-car-feature">
+                                                    <a href="#">2017</a>
+                                                    <a href="#">manual</a>
+                                                    <a href="#">AIR CONDITION</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-6 col-md-6 con hat">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="assets/img/car/car-4.jpg">
+                                                    <img src="assets/img/car/car-4.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Dodge Ram 1500</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> $55/day</span>
+                                                </h3>
+
+                                                <h5>HATCHBACK</h5>
+
+                                                <div class="p-car-feature">
+                                                    <a href="#">2017</a>
+                                                    <a href="#">manual</a>
+                                                    <a href="#">AIR CONDITION</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                </div>
+                                <!-- Choose Cars Content-wrap -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Choose Area Content End -->
+            </div>
+        </div>
+    </section>
+    <!--== Choose Car Area End ==-->
+    <!--
+        <!--== Pricing Area Start ==-->
+    <!--== Team Area End ==-->
+    <!--== Mobile App Area Start ==-->
+    <div id="mobileapp-video-bg"></div>
+    <section id="mobile-app-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mobile-app-content">
+                        <h2>Kampanyaları Kaçırmayın.</h2>
+                        <p>%30'a varan indirimlerden haberdar olmak için üye olun.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== Mobile App Area End ==-->
+    <!--== Articles Area Start ==-->
+    <section id="tips-article-area" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Section Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>Blog</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>RentACar Blog</p>
+                    </div>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <!-- Articles Content Wrap Start -->
+            <div class="row">
+                <!-- Single Articles Start -->
+                <div class="col-lg-12">
+                    <article class="single-article">
+                        <div class="row">
+                            <!-- Articles Thumbnail Start -->
+                            <div class="col-lg-5">
+                                <div class="article-thumb">
+                                    <img src="assets/img/article/arti-thumb-1.jpg" alt="JSOFT">
+                                </div>
+                            </div>
+                            <!-- Articles Thumbnail End -->
+                            <!-- Articles Content Start -->
+                            <div class="col-lg-7">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <div class="article-body">
+                                            <h3><a href="article-details.html">Akıllı Otomobil Cihazları Güvenli mi?</a></h3>
+                                            <div class="article-meta">
+                                                <a href="#" class="author">Tarafından :: <span>Vedat Uğurlu</span></a>
+                                                <a href="#" class="commnet">Yorumlar :: <span>10</span></a>
+                                            </div>
+
+                                            <div class="article-date">25 <span class="month">jan</span></div>
+
+                                            <p>Kaspersky araştırmacıları, araçları daha akıllı hale getirmek için tasarlanan ağ bağlantılı otomobil cihazlarını inceledi. Bu gruptaki ürünlerin, diğer Nesnelerin İnterneti (IoT) aksesuarlarına göre daha güvenli olduğu tespit edildi.</p>
+
+                                            <a href="article-details.html" class="readmore-btn">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Articles Content End -->
+                        </div>
+                    </article>
+                </div>
+                <!-- Single Articles End -->
+                <!-- Single Articles Start -->
+                <div class="col-lg-12">
+                    <article class="single-article middle">
+                        <div class="row">
+
+                            <!-- Articles Thumbnail Start -->
+                            <div class="col-lg-5 d-xl-none">
+                                <div class="article-thumb">
+                                    <img src="assets/img/article/arti-thumb-2.jpg" alt="JSOFT">
+                                </div>
+                            </div>
+                            <!-- Articles Thumbnail End -->
+                            <!-- Articles Content Start -->
+                            <div class="col-lg-7">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <div class="article-body">
+                                            <h3><a href="article-details.html">Dünyanın En Pahalı Elektrikli Arabası Hangisi ve Fiyatı Ne?	</a></h3>
+                                            <div class="article-meta">
+                                                <a href="#" class="author">By :: <span>Admin</span></a>
+                                                <a href="#" class="commnet">Comments :: <span>10</span></a>
+                                            </div>
+
+                                            <div class="article-date">14<span class="month">feb</span></div>
+
+                                            <p>Elektrikli araba fiyatları hem ülkemizde hem de dünya genelinde nispeten fazla. Bunun ana nedeni batarya maliyetleri ve bu yeni teknolojinin bazı ayaklarının çok da seri üretime bağlanmamış olması ile açıklanabilir. Ayrıca Türkiye gibi pek çok ülkede elektrikli araba vergileri de biraz yüksek. Özetle...</p>
+
+                                            <a href="article-details.html" class="readmore-btn">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Articles Content End -->
+                            <!-- Articles Thumbnail Start -->
+                            <div class="col-lg-5 d-none d-xl-block">
+                                <div class="article-thumb">
+                                    <img src="assets/img/article/arti-thumb-2.jpg" alt="JSOFT">
+                                </div>
+                            </div>
+                            <!-- Articles Thumbnail End -->
+                        </div>
+                    </article>
+                </div>
+                <!-- Single Articles End -->
+                <!-- Single Articles Start -->
+                <div class="col-lg-12">
+                    <article class="single-article">
+                        <div class="row">
+                            <!-- Articles Thumbnail Start -->
+                            <div class="col-lg-5">
+                                <div class="article-thumb">
+                                    <img src="assets/img/article/arti-thumb-3.jpg" alt="JSOFT">
+                                </div>
+                            </div>
+                            <!-- Articles Thumbnail End -->
+                            <!-- Articles Content Start -->
+                            <div class="col-lg-7">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <div class="article-body">
+                                            <h3><a href="article-details.html">Hangi Plakalar Muayeneden Geçemeyecek?</a></h3>
+                                            <div class="article-meta">
+                                                <a href="#" class="author">By :: <span>Admin</span></a>
+                                                <a href="#" class="commnet">Comments :: <span>10</span></a>
+                                            </div>
+
+                                            <div class="article-date">17 <span class="month">feb</span></div>
+
+                                            <p>TÜVTÜRK, 2017 yılında hangi araçların muayeneden geçemeyeceğine dair bir bildiri yayınladı. Bu bilgiler ışığında özellikle plaka konusu, çok detaylı bir biçimde irdelenecek. Standartlara uygun olmayan plakalara sahip araçlar TÜVTÜRK 2017 muayenesinden geçemeyecek.</p>
+
+                                            <a href="article-details.html" class="readmore-btn">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Articles Content End -->
+                        </div>
+                    </article>
+                </div>
+                <!-- Single Articles End -->
+            </div>
+            <!-- Articles Content Wrap End -->
+        </div>
+    </section>
+    <!--== Articles Area End ==-->
+    <!--== Footer Area Start ==-->
+    <section id="footer-area">
+        <!-- Footer Widget Start -->
+        <div class="footer-widget-area">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>Hakkımızda</h2>
+                            <div class="widget-body">
+                                <img src="assets/img/logo.png" alt="JSOFT">
+                                <p>10 yıldır Sorunsuz Hizmet.</p>
+
+                                <div class="newsletter-area">
+                                    <form action="index.html">
+                                        <input type="email" placeholder="Abone Olmayı Unutmayın">
+                                        <button type="submit" class="newsletter-btn"><i class="fa fa-send"></i></button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>RentACar</h2>
+                            <div class="widget-body">
+                                <ul class="recent-post">
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>iletişim</h2>
+                            <div class="widget-body">
+                                <p></p>
+
+                                <ul class="get-touch">
+                                    <li><i class="fa fa-map-marker"></i> 800/8, Kazipara, Dhaka</li>
+                                    <li><i class="fa fa-mobile"></i> +880 01 86 25 72 43</li>
+                                    <li><i class="fa fa-envelope"></i> kazukamdu83@gmail.com</li>
+                                </ul>
+                                <a href="https://goo.gl/maps/b5mt45MCaPB2" class="map-show" target="_blank">Show Location</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer Widget End -->
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom End -->
+    </section>
+    <!--== Footer Area End ==-->
+    <!--== Scroll Top Area Start ==-->
+    <div class="scroll-top">
+        <img src="assets/img/scroll-top.png" alt="JSOFT">
+    </div>
+    <!--== Scroll Top Area End ==-->
+    <!--=======================Javascript============================-->
+    <!--=== Jquery Min Js ===-->
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <!--=== Jquery Migrate Min Js ===-->
+    <script src="assets/js/jquery-migrate.min.js"></script>
+    <!--=== Popper Min Js ===-->
+    <script src="assets/js/popper.min.js"></script>
+    <!--=== Bootstrap Min Js ===-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--=== Gijgo Min Js ===-->
+    <script src="assets/js/plugins/gijgo.js"></script>
+    <!--=== Vegas Min Js ===-->
+    <script src="assets/js/plugins/vegas.min.js"></script>
+    <!--=== Isotope Min Js ===-->
+    <script src="assets/js/plugins/isotope.min.js"></script>
+    <!--=== Owl Caousel Min Js ===-->
+    <script src="assets/js/plugins/owl.carousel.min.js"></script>
+    <!--=== Waypoint Min Js ===-->
+    <script src="assets/js/plugins/waypoints.min.js"></script>
+    <!--=== CounTotop Min Js ===-->
+    <script src="assets/js/plugins/counterup.min.js"></script>
+    <!--=== YtPlayer Min Js ===-->
+    <script src="assets/js/plugins/mb.YTPlayer.js"></script>
+    <!--=== Magnific Popup Min Js ===-->
+    <script src="assets/js/plugins/magnific-popup.min.js"></script>
+    <!--=== Slicknav Min Js ===-->
+    <script src="assets/js/plugins/slicknav.min.js"></script>
+
+    <!--=== Mian Js ===-->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

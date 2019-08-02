@@ -10,8 +10,8 @@ namespace CarRental.Services.Interfaces
     public interface IBookServices
     {
 
-        IOperationResult<BookInfoDto> AddBooking(BookCustomerDto bookCustomerDto);
-        BookInfoDto GetBookInfo(int referenceNumber);
+        OperationResult<BookInfoDto> AddBooking(BookRequestDto bookCustomerDto);
+        BookInfoDto GetBookInfo(string referenceNumber);
        //private create booking
     }
 }

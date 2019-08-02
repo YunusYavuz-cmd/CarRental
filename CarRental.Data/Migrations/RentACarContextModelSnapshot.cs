@@ -29,11 +29,13 @@ namespace CarRental.Data.Migrations
 
                     b.Property<int>("BeforeKm");
 
-                    b.Property<int?>("CarId");
+                    b.Property<int>("CarId");
 
-                    b.Property<int?>("CustomerId");
+                    b.Property<int>("CustomerId");
 
-                    b.Property<int>("ReferenceNumber");
+                    b.Property<string>("LocationInfo");
+
+                    b.Property<string>("ReferenceNumber");
 
                     b.Property<DateTime>("RentEndDate");
 
@@ -66,11 +68,17 @@ namespace CarRental.Data.Migrations
 
                     b.Property<string>("CarModel");
 
+                    b.Property<int>("CarStyle");
+
                     b.Property<int>("CarYear");
 
                     b.Property<bool>("IsManual");
 
+                    b.Property<int>("LocationId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Car");
                 });
@@ -111,6 +119,36 @@ namespace CarRental.Data.Migrations
                     b.ToTable("CustomerProperties");
                 });
 
+            modelBuilder.Entity("CarRental.Domain.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CityLocation");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Location");
+                });
+
+            modelBuilder.Entity("CarRental.Domain.LocationPoint", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("LocationId");
+
+                    b.Property<string>("LocationPointName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.ToTable("LocationPoint");
+                });
+
             modelBuilder.Entity("CarRental.Domain.PriceTable", b =>
                 {
                     b.Property<int>("Id")
@@ -136,11 +174,21 @@ namespace CarRental.Data.Migrations
                 {
                     b.HasOne("CarRental.Domain.Car", "Car")
                         .WithMany("Books")
-                        .HasForeignKey("CarId");
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CarRental.Domain.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CarRental.Domain.Car", b =>
+                {
+                    b.HasOne("CarRental.Domain.Location", "Location")
+                        .WithMany("Cars")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CarRental.Domain.CustomerProperties", b =>
@@ -148,6 +196,14 @@ namespace CarRental.Data.Migrations
                     b.HasOne("CarRental.Domain.Customer")
                         .WithMany("CustomerProperties")
                         .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("CarRental.Domain.LocationPoint", b =>
+                {
+                    b.HasOne("CarRental.Domain.Location", "Location")
+                        .WithMany("LocationPoints")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CarRental.Domain.PriceTable", b =>
