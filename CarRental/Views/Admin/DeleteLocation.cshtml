@@ -1,0 +1,24 @@
+﻿@model CarRental.Services.Dto.DeleteLocationDto
+@{
+    Layout = null;
+    SelectListItem[] locations = ViewBag.LocationsList;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteLocation</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div>
+            <div>Şehir: @Html.DropDownListFor(m => m.LocationName, (IEnumerable<SelectListItem>)ViewBag.locations, "Select Location")</div>
+            <input type="submit" value="Delete LocationPoint" />
+
+        </div>
+    }
+</body>
+</html>

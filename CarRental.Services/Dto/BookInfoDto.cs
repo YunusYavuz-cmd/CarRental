@@ -14,6 +14,6 @@ namespace CarRental.Services.Dto
         public string CarColor { get; set; }
         public string CarLocation { get; set; }
         public int CarYear { get; set; }
-        public bool IsManual { get; set; }
+        public bool IsManual { get; set; } 
     }
 }

@@ -17,7 +17,7 @@ namespace CarRental.Services.Services
         {
             CarRep = carRep;
         }
-        public List<MiniAdvertDto> Reto()
+        public List<MiniAdvertDto> RandomCars()
         {
             var cars = CarRep.FindRandomCars(2);
             return cars.Select(x => x.ToDto()).ToList();
@@ -27,4 +27,4 @@ namespace CarRental.Services.Services
         //    CarRep.AddAndSave(car);
         //}
     }
-}
+}   

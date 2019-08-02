@@ -9,27 +9,33 @@ namespace CarRental.Services.Services
 {
     public class SearchService : ISearchService
     {
-   
-
-        private readonly ICarRepository CarRep;
-        public SearchService(ICarRepository carRep)
+        private readonly ICarRepository CarRepository;
+        public SearchService(ICarRepository carRepository)
         {
-            CarRep = carRep;
+            CarRepository = carRepository;
         }
-        public IOperationResult<SearchResult<AdvertListDto>> Search(SearchRequestDto searchRequestDto)
+        public OperationResult<SearchResult<AdvertListDto>> Search(SearchRequestDto searchRequestDto)
         {
-            var cars=CarRep.FindFilters(searchRequestDto.StartDate, searchRequestDto.EndDate, searchRequestDto.CarBrand, searchRequestDto.CarModel,
-                searchRequestDto.CarColor, searchRequestDto.CarLocation, searchRequestDto.MaxPrice, searchRequestDto.MinPrice, searchRequestDto.MinKm, searchRequestDto.MaxKm, searchRequestDto.CarFuelTypes, searchRequestDto.IsManual);
+            var cars=CarRepository.FindFilters(searchRequestDto.StartDate, searchRequestDto.EndDate, searchRequestDto.CarBrand, searchRequestDto.CarModel,
+                searchRequestDto.CarColor, searchRequestDto.CarLocation, searchRequestDto.MaxPrice, searchRequestDto.MinPrice, searchRequestDto.MinKm, searchRequestDto.MaxKm, searchRequestDto.CarFuelTypes, searchRequestDto.IsManual,searchRequestDto.CarStyle);
             if (cars.Count== 0) 
                 return new OperationResult<SearchResult<AdvertListDto>>(false, "Aradýðýnýz kriterde araç bulunamadý");
 
-            return new OperationResult<SearchResult<AdvertListDto>>(new SearchResult<AdvertListDto> {
+            return new OperationResult<SearchResult<AdvertListDto>>(true,"",(int) HttpStatusCode.OK, new SearchResult<AdvertListDto> {
                 Documents = new AdvertListDto {
                     AdvertList = cars.Select(x => x.ToDetailedDto()).ToList(),
                 },
-                Total = cars.Count
+                Total = cars.Count,
+                Take = 12
             });
+        }
+        public OperationResult<AdvertDetailedDto> GetAdvertById(int advertId)
+        {
+            var advertCar = CarRepository.GetCarById(advertId);
+            if (advertCar == null)
+                return new OperationResult<AdvertDetailedDto>(false, "Aradýðýnýz araç bulunamadý");
 
+            return new OperationResult<AdvertDetailedDto>(true, "", (int)HttpStatusCode.OK, advertCar.ToDetailedDto());
         }
     }
 }

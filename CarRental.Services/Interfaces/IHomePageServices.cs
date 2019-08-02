@@ -6,7 +6,7 @@ namespace CarRental.Services.Services
 {
     public interface IHomePageServices
     {
-        List<MiniAdvertDto> Reto();
+        List<MiniAdvertDto> RandomCars();
         //void AddCarTest(Car car);
     }
 }

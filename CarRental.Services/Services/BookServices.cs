@@ -3,6 +3,7 @@ using CarRental.Domain;
 using CarRental.Services.Converters;
 using CarRental.Services.Dto;
 using CarRental.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Net;
 
@@ -17,13 +18,12 @@ namespace CarRental.Services.Services
             CarRep = carRep;
             BookRep = bookRep;
         }
-        public IOperationResult<BookInfoDto> AddBooking(BookCustomerDto bookCustomerDto) //operation result . if data is null then not avaible. book oluşturulduğunda ekrana info sayfasını vercek
+        public OperationResult<BookInfoDto> AddBooking(BookRequestDto bookRequestDto) //operation result . if data is null then not avaible. book oluşturulduğunda ekrana info sayfasını vercek
         {
-            if (CarRep.IsAvaible(bookCustomerDto.carId, bookCustomerDto.RentStartDate, bookCustomerDto.RentEndDate))
+            if (CarRep.IsAvaible(bookRequestDto.carId, bookRequestDto.RentStartDate, bookRequestDto.RentEndDate))
             {
-                Book book = CreateBooking(bookCustomerDto);
+                var book = CreateBooking(bookRequestDto);
                 BookRep.AddAndSave(book);
-            //    CarRep.AddBookToCar(bookCustomerDto.carId, book);
                 return new OperationResult<BookInfoDto>(true, "Successfully booked", (int)HttpStatusCode.OK, book.ToBookInfoDto());
             }
             else
@@ -32,42 +32,46 @@ namespace CarRental.Services.Services
             }
             
         }
-        private Book CreateBooking(BookCustomerDto bookCustomerDto)
+        public BookInfoDto GetBookInfo(string referenceNumber)
+        {
+            var bookInfo = BookRep.GetBookByReference(referenceNumber);
+            return bookInfo.ToBookInfoDto();
+        }
+        private Book CreateBooking(BookRequestDto bookRequestDto)
         {
 
-            var car = CarRep.GetCarById(bookCustomerDto.carId);
+            var car = CarRep.GetCarById(bookRequestDto.carId);
            
             List<CustomerProperties> customerProperties = new List<CustomerProperties> {
-                   new CustomerProperties{TypeId=1,Value=bookCustomerDto.CustomerAge },
-                   new CustomerProperties{TypeId=2,Value=bookCustomerDto.CustomerLicenseAge }
+                   new CustomerProperties{TypeId=1,Value=bookRequestDto.CustomerAge },
+                   new CustomerProperties{TypeId=2,Value=bookRequestDto.CustomerLicenseAge }
                 };
             var customer = new Customer //TODO: check customer exist
             {
-                CustomerEmail = bookCustomerDto.CustomerEmail,
-                CustomerPhoneNumber = bookCustomerDto.CustomerPhoneNumber,
-                CustomerName = bookCustomerDto.CustomerName,
+                CustomerEmail = bookRequestDto.CustomerEmail,
+                CustomerPhoneNumber = bookRequestDto.CustomerPhoneNumber,
+                CustomerName = bookRequestDto.CustomerName,
                 CustomerProperties = customerProperties
 
             };
             var book = new Book
             {
-                RentStartDate = bookCustomerDto.RentStartDate,
-                RentEndDate = bookCustomerDto.RentEndDate,
-                ReferenceNumber = bookCustomerDto.ReferenceNumber,
+                RentStartDate = bookRequestDto.RentStartDate,
+                RentEndDate = bookRequestDto.RentEndDate,
+                ReferenceNumber = CreateReferenceNumber(),
                 BeforeKm = car.CarKm,
                 AfterKm = car.CarKm,
-                Customer = customer,
-                CarId = car.Id  //gerek varmı aşağıdaki A comentinede gerek varmı???
+                CustomerId = customer.Id,
+                CarId = car.Id  
             };
-            //;if (car.Books == null) //A:gerek varmı ?
-            //    car.Books = new List<Book>();
-            //car.Books.Add(book);
             return book;
         }
-        public BookInfoDto GetBookInfo(int referenceNumber)
+        private string CreateReferenceNumber()
         {
-            var bookInfo = BookRep.GetBookByReference(referenceNumber);
-            return bookInfo.ToBookInfoDto();
+            return Guid.NewGuid().ToString();
+
         }
+       
+
     }
 }

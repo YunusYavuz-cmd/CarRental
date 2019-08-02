@@ -31,56 +31,54 @@ namespace CarRental.Web.Controllers
         }
         public IActionResult Index()
         {
-            addBooking();
-            return View(_homePageServices.Reto());
+          //  addBooking();
+            return View();
         }
 
         public void addBooking()
         {
-            var s=FeaturesApplicationDictionaryKey(1.ToString(), 999.ToString());
+           
+            //BookCustomerDto bookCustomerDto = new BookCustomerDto
+            //{
+            //    CustomerAge = 22,
+            //    CustomerEmail = s,
+            //    CustomerLicenseAge = 7,
+            //    CustomerName = "ahmet",
+            //    CustomerPhoneNumber = "05434730833",
+            //    ReferenceNumber = 45364,
+            //    RentStartDate = new DateTime(2017, 1, 15),
+            //    RentEndDate = new DateTime(2017, 1, 18),
+            //    carId = 1
 
+            //}; _bookService.AddBooking(bookCustomerDto);
 
-            BookCustomerDto bookCustomerDto = new BookCustomerDto
-            {
-                CustomerAge = 22,
-                CustomerEmail = s,
-                CustomerLicenseAge = 7,
-                CustomerName = "ahmet",
-                CustomerPhoneNumber = "05434730833",
-                ReferenceNumber = 45364,
-                RentStartDate = new DateTime(2017, 1, 15),
-                RentEndDate = new DateTime(2017, 1, 18),
-                carId = 1
+            //bookCustomerDto = new BookCustomerDto
+            //{
+            //    CustomerAge = 22,
+            //    CustomerEmail = "ahmet@sabanciuniv.edu",
+            //    CustomerLicenseAge = 7,
+            //    CustomerName = "ahmet",
+            //    CustomerPhoneNumber = "05434730833",
+            //    ReferenceNumber = 45364,
+            //    RentStartDate = new DateTime(2019, 1, 5),
+            //    RentEndDate = new DateTime(2019, 1, 8),
+            //    carId = 1
 
-            }; _bookService.AddBooking(bookCustomerDto);
+            //}; _bookService.AddBooking(bookCustomerDto);
 
-            bookCustomerDto = new BookCustomerDto
-            {
-                CustomerAge = 22,
-                CustomerEmail = "ahmet@sabanciuniv.edu",
-                CustomerLicenseAge = 7,
-                CustomerName = "ahmet",
-                CustomerPhoneNumber = "05434730833",
-                ReferenceNumber = 45364,
-                RentStartDate = new DateTime(2019, 1, 5),
-                RentEndDate = new DateTime(2019, 1, 8),
-                carId = 1
-
-            }; _bookService.AddBooking(bookCustomerDto);
-
-             bookCustomerDto = new BookCustomerDto
-            {
-                CustomerAge = 22,
-                CustomerEmail = "ahmet@sabanciuniv.edu",
-                CustomerLicenseAge = 7,
-                CustomerName = "ahmet",
-                CustomerPhoneNumber = "05434730833",
-                ReferenceNumber = 45364,
-                RentStartDate = new DateTime(2018, 12, 15),
-                RentEndDate = new DateTime(2019, 1, 30),
-                carId = 1
-            };
-            _bookService.AddBooking(bookCustomerDto);
+            // bookCustomerDto = new BookCustomerDto
+            //{
+            //    CustomerAge = 22,
+            //    CustomerEmail = "ahmet@sabanciuniv.edu",
+            //    CustomerLicenseAge = 7,
+            //    CustomerName = "ahmet",
+            //    CustomerPhoneNumber = "05434730833",
+            //    ReferenceNumber = 45364,
+            //    RentStartDate = new DateTime(2018, 12, 15),
+            //    RentEndDate = new DateTime(2019, 1, 30),
+            //    carId = 1
+            //};
+            //_bookService.AddBooking(bookCustomerDto);
 
 
         }

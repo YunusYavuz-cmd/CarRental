@@ -16,7 +16,7 @@ namespace CarRental.Data.Repositories
         {
         }
         public List<Car> FindFilters(DateTime? startDate,DateTime? endDate,string carBrand, string carModel, string carColor, string carLocation,
-                                     int? maxPrice,int? minPrice,int? minKm, int? maxKm, int? carFuelTypes, bool? isManuel)
+                                     int? maxPrice,int? minPrice,int? minKm, int? maxKm, int? carFuelTypes, bool? isManuel,int? carStyle)
         {
             var query = DbSet.AsQueryable();
             if (maxPrice.HasValue)
@@ -31,6 +31,8 @@ namespace CarRental.Data.Repositories
                 query = query.Where(x => x.CarColor == carColor);
             if (minKm.HasValue)
                 query = query.Where(x => x.CarKm >= minKm.Value);
+            if (carStyle.HasValue)
+                query = query.Where(x => x.CarStyle == (Car.CarStyles)carStyle.Value);
             if (maxKm.HasValue)
                 query = query.Where(x => x.CarKm <= maxKm.Value);
             if (carFuelTypes.HasValue)
@@ -59,7 +61,11 @@ namespace CarRental.Data.Repositories
          
         //DbSet.Where(x => x.Id == carId && x.PriceTables.Select(y => (y.EndDate < startDate) || (y.StartDate > endDate)).FirstOrDefault());     
             return null;
-                }
+        }
+        public List<Car> FindByStyle(int carStyle)
+        {
+            return DbSet.Where(x => x.CarStyle == (Car.CarStyles)carStyle).ToList();
+        }
         public List<Car> FindRandomCars(int randNum)
         {
                return DbSet.OrderBy(r => Guid.NewGuid()).Take(randNum).ToList();

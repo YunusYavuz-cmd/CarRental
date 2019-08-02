@@ -18,7 +18,7 @@ namespace CarRental.Data.Repositories
         {
             return DbSet.ToList();
         }
-        public Book GetBookByReference(int referenceNumber)
+        public Book GetBookByReference(string referenceNumber)
         {
             return DbSet.Where(x => x.ReferenceNumber == referenceNumber).FirstOrDefault();
         }
