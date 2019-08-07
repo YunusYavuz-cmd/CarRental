@@ -31,7 +31,7 @@ namespace CarRental.Services.Services
         }
         public OperationResult<AdvertDetailedDto> GetAdvertById(int advertId)
         {
-            var advertCar = CarRepository.GetCarById(advertId);
+            var advertCar = CarRepository.GetById(advertId);
             if (advertCar == null)
                 return new OperationResult<AdvertDetailedDto>(false, "Aradýðýnýz araç bulunamadý");
 

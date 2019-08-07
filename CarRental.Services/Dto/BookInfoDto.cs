@@ -15,5 +15,6 @@ namespace CarRental.Services.Dto
         public string CarLocation { get; set; }
         public int CarYear { get; set; }
         public bool IsManual { get; set; } 
+        public string ReferenceNumber { get; set; }
     }
 }

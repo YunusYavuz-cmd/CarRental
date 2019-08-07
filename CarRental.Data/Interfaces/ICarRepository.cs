@@ -12,7 +12,6 @@ namespace CarRental.Data.Interfaces
         List<Car> FindAllCars();
         int? FindCarPriceBetweenDates(int carId, DateTime startDate, DateTime endDate);    
         List<Car> FindRandomCars(int randNum);
-        Car GetCarById(int carId);
         bool IsAvaible(int carId, DateTime startDate, DateTime endDate);
         void AddBookToCar(int carId, Book book);
             

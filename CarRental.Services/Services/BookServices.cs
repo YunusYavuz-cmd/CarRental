@@ -40,8 +40,8 @@ namespace CarRental.Services.Services
         private Book CreateBooking(BookRequestDto bookRequestDto)
         {
 
-            var car = CarRep.GetCarById(bookRequestDto.carId);
-           
+            var car = CarRep.GetById(bookRequestDto.carId);
+          
             List<CustomerProperties> customerProperties = new List<CustomerProperties> {
                    new CustomerProperties{TypeId=1,Value=bookRequestDto.CustomerAge },
                    new CustomerProperties{TypeId=2,Value=bookRequestDto.CustomerLicenseAge }

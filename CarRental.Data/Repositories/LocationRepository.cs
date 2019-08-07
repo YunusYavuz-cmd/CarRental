@@ -29,7 +29,7 @@ namespace CarRental.Data.Repositories
         }
         public List<string> GetAllLocationNames()
         {
-            return DbSet.Select(x => x.CityLocation).ToList<string>();
+            return DbSet.Select(x => x.CityLocation).ToList();
         }
         public List<Location> GetAllLocations()
         {

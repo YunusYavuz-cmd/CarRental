@@ -45,15 +45,14 @@ namespace CarRental.Services.Services
         }
         public OperationResult DeleteLocation(DeleteLocationDto deleteLocationDto)
         {
-            var location = LocationRepository.GetLocationById(deleteLocationDto.LocationId);
+            var location = LocationRepository.GetById(deleteLocationDto.LocationId);
             if (location == null)
                 return new OperationResult(false, "Şehir Bulunamadı.", (int)HttpStatusCode.NotFound);
             LocationRepository.DeleteAndSave(location);
-
+            return new OperationResult(true, "Şehir Silindi", (int)HttpStatusCode.OK);
         }
-        public OperationResult AddLocationPoint(AddDeleteLocationPointDto addLocationPointDto) //operation result . if data is null then not avaible. book oluşturulduğunda ekrana info sayfasını vercek
+        public OperationResult AddLocationPoint(AddLocationPointDto addLocationPointDto) //operation result . if data is null then not avaible. book oluşturulduğunda ekrana info sayfasını vercek
         {
-            addLocationPointDto.LocationPointName = ToLowerCaseString(addLocationPointDto.LocationPointName);
             if(addLocationPointDto.LocationId == null)
                 return new OperationResult(false, "Şehir bulunamadı", (int)HttpStatusCode.NotFound);
             if (LocationPointRepository.IsLocationExist(addLocationPointDto.LocationPointName))
@@ -64,11 +63,11 @@ namespace CarRental.Services.Services
 
             return new OperationResult(true, "Teslim Noktası eklendi.", (int)HttpStatusCode.OK);
         }
-        public OperationResult DeleteLocationPoint(AddDeleteLocationPointDto addDeleteLocationPointDto)
+        public OperationResult DeleteLocationPoint(AddLocationPointDto addDeleteLocationPointDto)
         {
-            if(addDeleteLocationPointDto.LocationPointId==null)
-                return new OperationResult(false, " Şehir Id si Atanmamış.", (int)HttpStatusCode.NotFound);
-            var locationPoint = LocationPointRepository.GetLocationPointById((int) addDeleteLocationPointDto.LocationPointId);
+            //  if(addDeleteLocationPointDto.LocationPointId==null)
+            //    return new OperationResult(false, " Şehir Id si Atanmamış.", (int)HttpStatusCode.NotFound);
+            var locationPoint = LocationPointRepository.GetById((int)3);//addDeleteLocationPointDto.LocationPointId);
             if (locationPoint == null) 
                 return new OperationResult(false, "Teslim Noktası Bulunamadı.", (int)HttpStatusCode.NotFound);
             LocationPointRepository.DeleteAndSave(locationPoint);
@@ -88,9 +87,13 @@ namespace CarRental.Services.Services
         
 
 
-        public List<string> GetLocationsList()
+        public List<string> GetLocationNamesList()
         {
             return LocationRepository.GetAllLocationNames();
+        }
+        public List<string> GetLocationPointsList()
+        {
+            return LocationPointRepository.GetAllLocationPointNames();
         }
         public List<DeleteLocationDto> GetLocationsDto()
         {
@@ -122,7 +125,7 @@ namespace CarRental.Services.Services
         //}
         //
         //
-        public LocationPoint CreateLocationPoint(AddDeleteLocationPointDto addLocationPointDto)
+        public LocationPoint CreateLocationPoint(AddLocationPointDto addLocationPointDto)
         {
             return new LocationPoint
             {

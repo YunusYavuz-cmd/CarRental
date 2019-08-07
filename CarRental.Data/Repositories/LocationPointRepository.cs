@@ -16,6 +16,9 @@ namespace CarRental.Data.Repositories
         {
             return DbSet.Any(x => x.LocationPointName == locationPoint);
         }
-
+        public List<string> GetAllLocationPointNames()
+        {
+            return DbSet.Select(x => x.LocationPointName).ToList();
+        }
     }
 }

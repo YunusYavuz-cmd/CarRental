@@ -24,6 +24,7 @@ namespace CarRental.Services.Converters
                 IsManual = book.Car.IsManual,
                 CustomerName = book.Customer.CustomerName,
                 RentEndDate = book.RentEndDate,
+                ReferenceNumber= book.ReferenceNumber,
                 RentStartDate = book.RentStartDate
             };
         }

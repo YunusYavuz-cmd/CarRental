@@ -123,4 +123,9 @@
     <ProjectReference Include="..\CarRental.Services\CarRental.Services.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\admin\js\" />
+  </ItemGroup>
+
 </Project>

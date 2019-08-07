@@ -22,7 +22,7 @@ namespace CarRental.Data.Repositories
             DbSet.Add(entity);
             return Save();
         }
-        public T FindById(long id)
+        public T GetById(long id)
         {
             return DbSet.FirstOrDefault(x => x.Id == id);
         }
@@ -61,7 +61,7 @@ namespace CarRental.Data.Repositories
         {
             DbSet.Attach(entitiy);
         }
-
+        
         //public virtual T Add(T entity)
         //{
         //    if (entity == null)

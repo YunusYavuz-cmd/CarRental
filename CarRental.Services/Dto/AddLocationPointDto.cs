@@ -5,11 +5,10 @@ using System.Text;
 
 namespace CarRental.Services.Dto
 {
-   public class AddDeleteLocationPointDto
+   public class AddLocationPointDto
     {
-        [Required]public string CityLocation { get; set; }
-        [Required] public string LocationPoint { get; set; }
+        [Required]public string LocationIdString { get; set; }
+        [Required] public string LocationPointName { get; set; }
         public int? LocationId { get; set; }
-
     }
 }

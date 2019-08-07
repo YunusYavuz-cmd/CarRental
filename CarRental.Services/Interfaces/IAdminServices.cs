@@ -8,12 +8,12 @@ namespace CarRental.Services.Interfaces
     {
         OperationResult AddLocation(string cityLocation); //operation result . if data is null then not avaible. book oluşturulduğunda ekrana info sayfasını vercek
         OperationResult AddCar(AddCarDto addCarDto);
-        List<string> GetLocationsList();
-        void DeleteLocation(DeleteLocationDto str);
+        List<string> GetLocationNamesList();
+        OperationResult DeleteLocation(DeleteLocationDto deleteLocationDto);
         List<DeleteLocationDto> GetLocationsDto();
 
 
-        OperationResult AddLocationPoint(AddDeleteLocationPointDto addLocationPointDto);
+        OperationResult AddLocationPoint(AddLocationPointDto addLocationPointDto);
 
     }
 }

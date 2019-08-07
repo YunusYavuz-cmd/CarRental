@@ -24,7 +24,7 @@ namespace CarRental.Web.Controllers
         [HttpGet]
         public ActionResult AddCar()
         {
-            var locationList = _adminServices.GetLocationsList();
+            var locationList = _adminServices.GetLocationNamesList();
             ViewBag.locations = locationList.Select(x =>
                                  new SelectListItem()
                                  {
@@ -37,7 +37,7 @@ namespace CarRental.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var locationList = _adminServices.GetLocationsList();
+                var locationList = _adminServices.GetLocationNamesList();
                 ViewBag.locations = locationList.Select(x =>
                                      new SelectListItem()
                                      {
@@ -101,30 +101,78 @@ namespace CarRental.Web.Controllers
         [HttpGet]
         public ActionResult AddLocationPoint()
         {
-            var locationList = _adminServices.GetLocationsList();
+            var locationList = _adminServices.GetLocationsDto();
             ViewBag.locations = locationList.Select(x =>
                                  new SelectListItem()
                                  {
-                                     Text = x
+                                     Text = x.LocationName,
+                                     Value = x.LocationId.ToString()
                                  });
-            return View(new AddDeleteLocationPointDto());
+            return View(new AddLocationPointDto());
         }
 
         [HttpPost]
-        public ActionResult AddLocationPoint(AddDeleteLocationPointDto addLocationPoint)
+        public ActionResult AddLocationPoint(AddLocationPointDto addLocationPoint)
         {
             if (!ModelState.IsValid)
             {
-                var locationList = _adminServices.GetLocationsList();
+                var locationList = _adminServices.GetLocationsDto();
                 ViewBag.locations = locationList.Select(x =>
                                      new SelectListItem()
                                      {
-                                         Text = x
+                                         Text = x.LocationName,
+                                         Value = x.LocationId.ToString()
                                      });
                 return View(addLocationPoint);
             }
+            addLocationPoint.LocationId = Convert.ToInt32(addLocationPoint.LocationIdString);
             _adminServices.AddLocationPoint(addLocationPoint);
             return Redirect("/Admin");
         }
+        [HttpGet]
+        public ActionResult DeleteLocationPoint()
+        {
+            var locationList = _adminServices.GetLocationsDto();
+            ViewBag.locations = locationList.Select(x =>
+                                 new SelectListItem()
+                                 {
+                                     Text = x.LocationName,
+                                     Value = x.LocationId.ToString()
+                                 });
+            ViewBag.locationPoints = ViewBag.locations;
+                              /*new SelectListItem()
+                              {
+                                  Text = "Select Location First",
+                                  Value = null
+                              };*/
+            return View(new DeleteLocationPointDto());
+        }
+        [HttpPost]
+        public ActionResult DeleteLocationPoint(string data)
+        {
+            var locationList = _adminServices.GetLocationsDto();
+            ViewBag.locationPoint = null;
+            return View();
+        }
+        //[HttpPost]
+        //public ActionResult DeleteLocationPoint(AddLocationPointDto deleteLocationPoint)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        var locationList = _adminServices.GetLocationsDto();
+        //        ViewBag.locations = locationList.Select(x =>
+        //                             new SelectListItem()
+        //                             {
+        //                                 Text = x.LocationName,
+        //                                 Value = x.LocationId.ToString()
+        //                             });
+        //    //    var locationPointList = _adminServices.GetLocationPointsList();
+        //      //  ViewBag.locationPoints = 
+        //        return View(deleteLocationPoint);
+        //    }
+        //    deleteLocationPoint.LocationId = Convert.ToInt32(deleteLocationPoint.LocationIdString);
+        //    _adminServices.AddLocationPoint(deleteLocationPoint);
+        //    return Redirect("/Admin");
+        //}
     }
 }

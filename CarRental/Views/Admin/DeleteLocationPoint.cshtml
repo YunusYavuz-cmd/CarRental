@@ -1,0 +1,30 @@
+﻿@model CarRental.Services.Dto.DeleteLocationPointDto
+@{
+    Layout = null;
+    SelectListItem[] locations = ViewBag.LocationsList;
+    SelectListItem[] locationPoints = ViewBag.LocationPointsList;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteLocationPoint</title>
+</head>
+<body>
+
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            <div>Şehir: @Html.DropDownListFor(m => m.LocationIdString, (IEnumerable<SelectListItem>)ViewBag.locations, "Select Location", new { id = "ddlInstitution" })</div>
+            <div>Teslim Noktası: @Html.DropDownListFor(m => m.LocationPointIdString, (IEnumerable<SelectListItem>)ViewBag.locationPoints, "Select Location")</div>
+            <input type="submit" value="Delete LocationPoint" />
+
+        </div>
+    }
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
