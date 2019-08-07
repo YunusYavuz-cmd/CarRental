@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@model CarRental.Services.Dto.HomePageModel
 <html class="no-js" lang="zxx">
 @{
     Layout = null;
@@ -142,18 +143,22 @@
                                         <div class="pick-location bookinput-item">
                                             <select class="custom-select">
                                                 <option selected>Alım Noktası</option>
-                                                <option value="1">Dhaka</option>
-                                                <option value="2">Comilla</option>
-                                                <option value="3">Barishal</option>
-                                                <option value="3">Rangpur</option>
+                                                
+                                                @foreach (var locName in Model.DeliveryLocations)
+                                                {
+                                                    <option value="">@locName</option>
+
+                                                }
                                             </select>
                                         </div>
                                         <div class="car-choose bookinput-item">
                                             <select class="custom-select">
                                                 <option selected>Teslim Noktası</option>
-                                                <option value="1">BMW</option>
-                                                <option value="2">Audi</option>
-                                                <option value="3">Lexus</option>
+                                                @foreach (var locName in Model.LocationPoints)
+                                                {
+                                                    <option value="">@locName</option>
+
+                                                }
                                             </select>
                                         </div>
 

@@ -16,7 +16,7 @@ namespace CarRental.Services.Services
         }
         public OperationResult<SearchResult<AdvertListDto>> Search(SearchRequestDto searchRequestDto)
         {
-            SetKeywords(searchRequestDto);
+            //SetKeywords(searchRequestDto);
             var cars=CarRepository.FindFilters(searchRequestDto.StartDate, searchRequestDto.EndDate, searchRequestDto.CarBrand, searchRequestDto.CarModel,
                 searchRequestDto.CarColor, searchRequestDto.CarLocation, searchRequestDto.MaxPrice, searchRequestDto.MinPrice, searchRequestDto.MinKm, searchRequestDto.MaxKm, searchRequestDto.CarFuelTypes, searchRequestDto.IsManual,searchRequestDto.CarStyle);
             if (cars.Count== 0) 
@@ -31,13 +31,13 @@ namespace CarRental.Services.Services
             });
         }
 
-        private void SetKeywords(SearchRequestDto searchRequestDto)
-        {
-            if (searchRequestDto.Keywords == "otomatik")
-                searchRequestDto.IsManual = false;
-            if (searchRequestDto.Keywords == "manual")
-                searchRequestDto.IsManual = true;
-        }
+        //private void SetKeywords(SearchRequestDto searchRequestDto)
+        //{
+        //    if (searchRequestDto.Keywords == "otomatik")
+        //        searchRequestDto.IsManual = false;
+        //    if (searchRequestDto.Keywords == "manual")
+        //        searchRequestDto.IsManual = true;
+        //}
 
         public OperationResult<AdvertDetailedDto> GetAdvertById(int advertId)
         {

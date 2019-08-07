@@ -36,7 +36,7 @@ namespace CarRental.Services.Services
             {
                 var location = new Location
                 {
-                 CityLocation= cityLocation
+                     CityLocation= cityLocation
                 };
                 LocationRepository.AddAndSave(location);
 
@@ -51,7 +51,7 @@ namespace CarRental.Services.Services
             LocationRepository.DeleteAndSave(location);
             return new OperationResult(true, "Şehir Silindi", (int)HttpStatusCode.OK);
         }
-        public OperationResult AddLocationPoint(AddLocationPointDto addLocationPointDto) //operation result . if data is null then not avaible. book oluşturulduğunda ekrana info sayfasını vercek
+        public OperationResult AddLocationPoint(AddLocationPointDto addLocationPointDto) 
         {
             if(addLocationPointDto.LocationId == null)
                 return new OperationResult(false, "Şehir bulunamadı", (int)HttpStatusCode.NotFound);

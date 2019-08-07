@@ -29,10 +29,16 @@ namespace CarRental.Web.Controllers
             _bookService = bookServices;
             
         }
+        [HttpGet]
         public IActionResult Index()
         {
+            var a = new HomePageModel
+            {
+                DeliveryLocations = _homePageServices.GetLocationNamesList(),
+                LocationPoints= _homePageServices.GetLocationPointsList()
+            };
           //  addBooking();
-            return View();
+            return View(a);
         }
 
         public void addBooking()

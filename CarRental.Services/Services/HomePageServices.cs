@@ -13,14 +13,27 @@ namespace CarRental.Services.Services
     public class HomePageServices : IHomePageServices
     {
         private readonly ICarRepository CarRep;
-        public HomePageServices(ICarRepository carRep)
+        private readonly ILocationRepository LocationRepository;
+        private readonly ILocationPointRepository LocationPointRepository;
+        public HomePageServices(ICarRepository carRep,ILocationRepository locationRepository,ILocationPointRepository locationPointRepository)
         {
             CarRep = carRep;
+            LocationPointRepository = locationPointRepository;
+            LocationRepository = locationRepository;
+        }
+
+        public List<string> GetLocationNamesList()
+        {
+            return LocationRepository.GetAllLocationNames();
         }
         public List<MiniAdvertDto> RandomCars()
         {
             var cars = CarRep.FindRandomCars(2);
             return cars.Select(x => x.ToDto()).ToList();
+        }
+        public List<string> GetLocationPointsList()
+        {
+            return LocationPointRepository.GetAllLocationPointNames();
         }
         //public void AddCarTest(Car car)
         //{

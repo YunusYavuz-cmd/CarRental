@@ -7,6 +7,11 @@ namespace CarRental.Services.Services
     public interface IHomePageServices
     {
         List<MiniAdvertDto> RandomCars();
+        List<string> GetLocationNamesList();
+
+        List<string> GetLocationPointsList();
+        
+
         //void AddCarTest(Car car);
     }
 }
