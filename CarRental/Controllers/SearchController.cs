@@ -14,7 +14,7 @@ namespace CarRental.Web.Controllers
         public IActionResult Index(SearchRequestDto searchRequestDto) //
         {
             var result = _searchService.Search(searchRequestDto);
-            return View(result);
+            return View(result.Data);
         }
     }
 }

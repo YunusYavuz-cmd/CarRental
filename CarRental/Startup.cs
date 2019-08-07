@@ -79,7 +79,8 @@ namespace CarRental.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute("search", "/kiralik-{modelName}", new {controller = "Search", action = "Index"});
+                routes.MapRoute("searchL2", "/kiralik-{carBrand}-{carModel}", new {controller = "Search", action = "Index"});
+                routes.MapRoute("searchL1", "/kiralik-{carBrand}", new {controller = "Search", action = "Index"});
                 routes.MapRoute("search", "/kiralik-arac", new { controller = "Search", action = "Index" });
             });
         }

@@ -1,0 +1,32 @@
+@using Newtonsoft.Json
+@model CarRental.Services.Dto.SearchResult<CarRental.Services.Dto.AdvertListDto>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2></h2>
+
+@if (Model?.Documents?.AdvertList != null && Model.Documents.AdvertList.Count > 0)
+{
+    foreach (var carDto in Model.Documents.AdvertList)
+    {
+        <span>
+            @carDto.CarBrand @carDto.CarModel
+            @if (carDto.IsManual)
+            {
+                @: Manuel
+            }
+            else
+            {
+                @: Otomatik
+            }
+        </span>
+        <br/>
+    }
+}
+else
+{
+    @:Sonuç Yok!
+}
