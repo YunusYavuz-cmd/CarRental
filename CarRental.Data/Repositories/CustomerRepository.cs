@@ -21,7 +21,14 @@ namespace CarRental.Data.Repositories
         {
             return _context.Customer.ToList();
         }
-
+        public bool IsCustomerExist(string customerEmail)
+        {
+            return DbSet.Any(x => x.CustomerEmail == customerEmail);
+        }
+        public int? GetCustomerId(string customerEmail)
+        {
+            return DbSet.Where(x => x.CustomerEmail == customerEmail).Select(x => x.Id).FirstOrDefault();
+        }
 
     }
 }

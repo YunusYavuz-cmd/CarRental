@@ -38,11 +38,11 @@ namespace CarRental.Data.Repositories
             if (carFuelTypes.HasValue)
             {
                 if (carFuelTypes == 1)
-                    query = query.Where(x => x.CarFuelTypes == carFuelTypes);
+                    query = query.Where(x =>(int) x.CarFuelType == carFuelTypes);
                 else if (carFuelTypes == 2)
-                    query = query.Where(x => x.CarFuelTypes == carFuelTypes);
+                    query = query.Where(x => (int)x.CarFuelType == carFuelTypes);
                 else if (carFuelTypes == 3)
-                    query = query.Where(x => x.CarFuelTypes == carFuelTypes);
+                    query = query.Where(x => (int)x.CarFuelType == carFuelTypes);
             }
             if (startDate.HasValue && endDate.HasValue)
             {

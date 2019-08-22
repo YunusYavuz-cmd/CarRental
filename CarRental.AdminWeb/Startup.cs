@@ -12,12 +12,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CarRental.Web
+namespace CarRental.AdminWeb
 {
     public class Startup
     {
@@ -38,25 +37,21 @@ namespace CarRental.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddTransient<IAdminServices, AdminServices>();
 
             services.AddTransient<ISearchService, SearchService>();
             services.AddTransient<IBookServices, BookServices>();
-            services.AddTransient<IHomePageServices,HomePageServices>();
-            services.AddTransient<ICarRepository,CarRepository>();
-            services.AddTransient<IHomePageServices, HomePageServices>();
+            services.AddTransient<ICarRepository, CarRepository>();
             services.AddTransient<ILocationRepository, LocationRepository>();
             services.AddTransient<IAdminServices, AdminServices>();
             services.AddTransient<ILocationPointRepository, LocationPointRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
-
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddAuthentication(IISDefaults.AuthenticationScheme);
-
+            services.AddAuthentication(Microsoft.AspNetCore.Server.IISIntegration.IISDefaults.AuthenticationScheme);
             var connection = @"Server=.\SQLEXPRESS;Database=Rent.Database;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<RentACarContext>
-                (options => options.UseSqlServer(connection));
+          (options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,9 +77,6 @@ namespace CarRental.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute("searchL2", "/kiralik-{carBrand}-{carModel}", new {controller = "Search", action = "Index"});
-                routes.MapRoute("searchL1", "/kiralik-{carBrand}", new {controller = "Search", action = "Index"});
-                routes.MapRoute("search", "/kiralik-arac", new { controller = "Search", action = "Index" });
             });
         }
     }

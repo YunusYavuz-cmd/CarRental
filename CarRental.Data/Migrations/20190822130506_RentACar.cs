@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarRental.Data.Migrations
 {
-    public partial class CarRental : Migration
+    public partial class RentACar : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,7 +69,7 @@ namespace CarRental.Data.Migrations
                     CarLocation = table.Column<string>(nullable: true),
                     CarYear = table.Column<int>(nullable: false),
                     CarKm = table.Column<int>(nullable: false),
-                    CarFuelTypes = table.Column<int>(nullable: false),
+                    CarFuelType = table.Column<int>(nullable: false),
                     IsManual = table.Column<bool>(nullable: false),
                     CarStyle = table.Column<int>(nullable: false),
                     LocationId = table.Column<int>(nullable: false)

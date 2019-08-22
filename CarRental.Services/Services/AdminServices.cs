@@ -140,7 +140,7 @@ namespace CarRental.Services.Services
                 CarBrand = addCarDto.CarBrand,
                 CarModel = addCarDto.CarModel,
                 CarColor = addCarDto.CarColor,
-                CarFuelTypes = addCarDto.CarFuelTypes,
+                CarFuelType = (CarRental.Domain.Car.CarFuelTypes) addCarDto.CarFuelTypes,
                 CarKm = addCarDto.CarKm,
                 CarLocation = addCarDto.CarLocation,
                 CarStyle = (CarRental.Domain.Car.CarStyles)addCarDto.CarStyle,

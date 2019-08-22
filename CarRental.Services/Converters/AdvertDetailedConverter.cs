@@ -18,7 +18,7 @@ namespace CarRental.Services.Converters
 
                 CarBrand = car.CarBrand,
                 CarColor=car.CarColor,
-                CarFuelTypes=(int ) car.CarFuelTypes,
+                CarFuelTypes= car.CarFuelType,
                 CarKm=car.CarKm,
                 //CarPrice=car.PriceTables TODO: ADD PRICE  
                 CarId = car.Id,

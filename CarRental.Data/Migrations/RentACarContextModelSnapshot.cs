@@ -60,7 +60,7 @@ namespace CarRental.Data.Migrations
 
                     b.Property<string>("CarColor");
 
-                    b.Property<int>("CarFuelTypes");
+                    b.Property<int>("CarFuelType");
 
                     b.Property<int>("CarKm");
 

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRental.Data.Migrations
 {
     [DbContext(typeof(RentACarContext))]
-    [Migration("20190801072835_CarRental")]
-    partial class CarRental
+    [Migration("20190822130506_RentACar")]
+    partial class RentACar
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,7 +62,7 @@ namespace CarRental.Data.Migrations
 
                     b.Property<string>("CarColor");
 
-                    b.Property<int>("CarFuelTypes");
+                    b.Property<int>("CarFuelType");
 
                     b.Property<int>("CarKm");
 

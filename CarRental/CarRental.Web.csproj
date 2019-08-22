@@ -18,6 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\assets\js\jquery-3.2.1.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
     <None Include="wwwroot\assets\css\bootstrap.min.css" />
     <None Include="wwwroot\assets\css\font-awesome.css" />
@@ -94,7 +100,6 @@
     <None Include="wwwroot\assets\img\we-do\service2-img.png" />
     <None Include="wwwroot\assets\img\we-do\service3-img.png" />
     <None Include="wwwroot\assets\js\bootstrap.min.js" />
-    <None Include="wwwroot\assets\js\jquery-3.2.1.min.js" />
     <None Include="wwwroot\assets\js\jquery-migrate.min.js" />
     <None Include="wwwroot\assets\js\main.js" />
     <None Include="wwwroot\assets\js\plugins\counterup.min.js" />
