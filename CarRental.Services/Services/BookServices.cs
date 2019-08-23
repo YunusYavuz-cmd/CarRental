@@ -44,17 +44,18 @@ namespace CarRental.Services.Services
 
             var car = CarRepository.GetById(bookRequestDto.carId);
             int? customerId;
-            List<CustomerProperties> customerProperties = new List<CustomerProperties> {
-                   new CustomerProperties{TypeId=1,Value=bookRequestDto.CustomerAge },
-                   new CustomerProperties{TypeId=2,Value=bookRequestDto.CustomerLicenseAge }
-                };
-            if(!CustomerRepository.IsCustomerExist(bookRequestDto.CustomerEmail))
+            
+            if(CustomerRepository.IsCustomerExist(bookRequestDto.CustomerEmail))
             {
                 customerId=CustomerRepository.GetCustomerId(bookRequestDto.CustomerEmail);
             
             }
             else
             {
+                List<CustomerProperties> customerProperties = new List<CustomerProperties> {
+                   new CustomerProperties{TypeId=1,Value=bookRequestDto.CustomerAge },
+                   new CustomerProperties{TypeId=2,Value=bookRequestDto.CustomerLicenseAge }
+                };
 
                 var customer = new Customer //TODO: check customer exist
                 {

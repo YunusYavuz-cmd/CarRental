@@ -5,7 +5,7 @@
 @model CarRental.Services.Dto.SearchResult<CarRental.Services.Dto.AdvertListDto>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "rez_sorgu";
     Layout = "_Layout";
 }
 
@@ -258,80 +258,15 @@
                     </div>
                 </div>
                 <!-- Sidebar Area End -->
-                <!-- Car List Content Start -->
-
-                <div class="col-lg-8">
-                    <div class="car-list-content m-t-50">
-                        @if (Model?.Documents?.AdvertList != null && Model.Documents.AdvertList.Count > 0)
-                        {
-                            int i = 0;
-                            string s = "";
-                            foreach (var carDto in Model.Documents.AdvertList)
-                            {
-                                s = "car - list - thumb car - thumb - " + i;
-                                <!-- Single Car Start -->
-                                <div class="single-car-wrap">
-                                    <div class="row">
-                                        <!-- Single Car Thumbnail -->
-                                        <div class="col-lg-5">
-                                            <div class=s></div>
-                                        </div>
-                                        <!-- Single Car Thumbnail -->
-                                        <!-- Single Car Info -->
-                                        <div class="col-lg-7">
-                                            <div class="display-table">
-                                                <div class="display-table-cell">
-                                                    <div class="car-list-info">
-                                                        <h2><a href="#"> @carDto.CarModel @carDto.CarBrand</a></h2>
-                                                        <h5>@carDto.CarPrice /per a day</h5>
-                                                        <ul class="car-info-list">
-                                                            <li>@carDto.CarFuelTypes</li>
-                                                            <li>@carDto.CarYear</li>
-                                                            <li>@carDto.CarLocation</li>
-                                                        </ul>
-                                                        <p class="rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star unmark"></i>
-                                                        </p>
-                                                        <a href="#" class="rent-btn">Book It</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single Car info -->
-                                    </div>
-                                </div>
-                                <!-- Single Car End -->
-
-                            }
-                        }
-                        else
-                        {
-                            @:Sonuç Yok!
-                        }
-                    </div>
-
-                    <!-- Page Pagination Start -->
-                    <div class="page-pagi">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <!-- Page Pagination End -->
-                </div>
-                <!-- Car List Content End -->
-            </div>
+                
+                    @using (Html.BeginForm())
+                    {
+                        <div>
+                            <div>Rez No: <input type="text" id="cityLocation" name="cityLocation" /></div>
+                            <input type="submit" value="Create Location" />
+                        </div>
+                    }
+                
         </div>
     </section>
     <!--== Car List Area End ==-->
