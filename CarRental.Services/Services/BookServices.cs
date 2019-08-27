@@ -39,6 +39,11 @@ namespace CarRental.Services.Services
             var bookInfo = BookRepository.GetBookByReference(referenceNumber);
             return bookInfo.ToBookInfoDto();
         }
+        public BookInfoDto GetBookId(string referenceNumber)
+        {
+            var bookInfo = BookRepository.GetBookByReference(referenceNumber);
+            return bookInfo.ToBookInfoDto();
+        }
         private Book CreateBooking(BookRequestDto bookRequestDto)
         {
 

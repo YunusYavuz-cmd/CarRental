@@ -183,11 +183,11 @@
                     <div class="sidebar-content-wrap">
                         <!-- Single Sidebar Start -->
                         <div class="single-sidebar">
-                            <h3>For More Informations</h3>
+                            <h3>Daha fazla bilgi için</h3>
 
                             <div class="sidebar-body">
-                                <p><i class="fa fa-mobile"></i> +8801816 277 243</p>
-                                <p><i class="fa fa-clock-o"></i> Mon - Sat 8.00 - 18.00</p>
+                                <p><i class="fa fa-mobile"></i> +90 543 473 08 33</p>
+                                <p><i class="fa fa-clock-o"></i> Pzt - Cmt 8.00 - 18.00</p>
                             </div>
                         </div>
                         <!-- Single Sidebar End -->
@@ -264,17 +264,18 @@
                     <div class="car-list-content m-t-50">
                         @if (Model?.Documents?.AdvertList != null && Model.Documents.AdvertList.Count > 0)
                         {
-                            int i = 0;
+                            int i = 1;
                             string s = "";
                             foreach (var carDto in Model.Documents.AdvertList)
                             {
-                                s = "car - list - thumb car - thumb - " + i;
-                                <!-- Single Car Start -->
+
+                                s = "car-list-thumb car-thumb-" + i;
+                                <!-- Single Car Start -->i++;
                                 <div class="single-car-wrap">
                                     <div class="row">
                                         <!-- Single Car Thumbnail -->
                                         <div class="col-lg-5">
-                                            <div class=s></div>
+                                            <div class="@s"></div>
                                         </div>
                                         <!-- Single Car Thumbnail -->
                                         <!-- Single Car Info -->

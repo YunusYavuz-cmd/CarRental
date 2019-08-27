@@ -23,7 +23,12 @@ namespace CarRental.Web.Controllers
             }
             var a = _bookServices.GetBookInfo(referanceNum);
 
-            return Redirect("/services/bookinfo");
+            return Redirect("/services/bookinfo/"+id);
+        }
+        [HttpGet]
+        public ActionResult Rez-Bilgi(int id)
+        {
+            return View();
         }
 
     }
